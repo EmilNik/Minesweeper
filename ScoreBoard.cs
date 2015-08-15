@@ -4,7 +4,7 @@ using Wintellect.PowerCollections;
 
 namespace Minesweeper
 {
-    class ScoreBoard
+    public class ScoreBoard
     {
         // - moga da izpolzvam OrderedMultiDictionary!
         // - xaxax ne sym li gyzar? a?
