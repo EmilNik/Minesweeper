@@ -3,37 +3,37 @@
 namespace Minesweeper
 {
 
-    public class Minichki
+    public class Mines
     {
         private const int NUMBER_OF_MINES = 15;
         private const int MINES_FIELD_ROWS = 5;
         private const int MINES_FIELD_COLS = 10;
 
-        private static void Display(string[,] matricaNaMinite, bool boomed)
+        private static void DrawField(string[,] matrixOfTheMines, bool boomed)
         {
             Console.WriteLine();
             Console.WriteLine("     0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("   ---------------------");
-            for (int i = 0; i < matricaNaMinite.GetLength(0); i++)
+            for (int row = 0; row < matrixOfTheMines.GetLength(0); row++)
             {
-                Console.Write("{0} | ", i);
-                for (int j = 0; j < matricaNaMinite.GetLength(1); j++)
+                Console.Write("{0} | ", row);
+                for (int col = 0; col < matrixOfTheMines.GetLength(1); col++)
                 {
-                    if (!(boomed) && ((matricaNaMinite[i, j] == "") || (matricaNaMinite[i, j] == "*")))
+                    if (!(boomed) && ((matrixOfTheMines[row, col] == "") || (matrixOfTheMines[row, col] == "*")))
                     {
                         Console.Write(" ?");
                     }
-                    if (!(boomed) && (matricaNaMinite[i, j] != "") && (matricaNaMinite[i, j] != "*"))
+                    if (!(boomed) && (matrixOfTheMines[row, col] != "") && (matrixOfTheMines[row, col] != "*"))
                     {
-                        Console.Write(" {0}", matricaNaMinite[i, j]);
+                        Console.Write(" {0}", matrixOfTheMines[row, col]);
                     }
-                    if ((boomed) && (matricaNaMinite[i, j] == ""))
+                    if ((boomed) && (matrixOfTheMines[row, col] == ""))
                     {
                         Console.Write(" -");
                     }
-                    if ((boomed) && (matricaNaMinite[i, j] != ""))
+                    if ((boomed) && (matrixOfTheMines[row, col] != ""))
                     {
-                        Console.Write(" {0}", matricaNaMinite[i, j]);
+                        Console.Write(" {0}", matrixOfTheMines[row, col]);
                     }
 
                 }
@@ -141,7 +141,7 @@ namespace Minesweeper
 
             while (true)
             {
-                Display(minichki, isBoomed);
+                DrawField(minichki, isBoomed);
             enterRowCol:
                 Console.Write("Enter row and column: ");
                 string line = Console.ReadLine();
@@ -159,7 +159,7 @@ namespace Minesweeper
                         if (hasBoomedMine)
                         {
                             isBoomed = true;
-                            Display(minichki, isBoomed);
+                            DrawField(minichki, isBoomed);
                             Console.Write("\nBooom! You are killed by a mine! ");
                             Console.WriteLine("You revealed {0} cells without mines.", revealedCellsCounter);
 

@@ -9,7 +9,7 @@ namespace Minesweeper
     {
         public static void Main(string[] args)
         {
-            Minichki igra = new Minichki();
+            Mines igra = new Mines();
             igra.PlayMines();
         }
     }
