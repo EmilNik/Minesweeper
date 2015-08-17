@@ -41,38 +41,44 @@ namespace Minesweeper
             }
             Console.WriteLine("   ---------------------");
         }
-        private static bool Boom(string[,] matrica, int minesRow, int minesCol)
+        private static bool Boom(string[,] matrix, int minesRow, int minesCol)
         {
             bool isKilled = false;
             int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
             int[] dCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
             int minesCounter = 0;
-            if (matrica[minesRow, minesCol] == "*")
+
+            if (matrix[minesRow, minesCol] == "*")
             {
                 isKilled = true;
             }
-            if ((matrica[minesRow, minesCol] != "") && (matrica[minesRow, minesCol] != "*"))
+
+            if ((matrix[minesRow, minesCol] != "") && (matrix[minesRow, minesCol] != "*"))
             {
                 Console.WriteLine("Illegal Move!");
             }
-            if (matrica[minesRow, minesCol] == "")
+
+            if (matrix[minesRow, minesCol] == "")
             {
-                for (int direction = 0; direction < 8; direction++)
+                for (int currentPosition = 0; currentPosition < 8; currentPosition++)
                 {
-                    int newRow = dRow[direction] + minesRow;
-                    int newCol = dCol[direction] + minesCol;
-                    if ((newRow >= 0) && (newRow < matrica.GetLength(0)) &&
-                        (newCol >= 0) && (newCol < matrica.GetLength(1)) &&
-                        (matrica[newRow, newCol] == "*"))
+                    int newRow = dRow[currentPosition] + minesRow;
+                    int newCol = dCol[currentPosition] + minesCol;
+                    if ((newRow >= 0) && (newRow < matrix.GetLength(0)) &&
+                        (newCol >= 0) && (newCol < matrix.GetLength(1)) &&
+                        (matrix[newRow, newCol] == "*"))
                     {
                         minesCounter++;
                     }
                 }
-                matrica[minesRow, minesCol] += Convert.ToString(minesCounter);
+
+                matrix[minesRow, minesCol] += Convert.ToString(minesCounter);
             }
+
             return isKilled;
         }
-        private static bool PichLiSi(string[,] matrix, int cntMines)
+
+        private static bool AreAllCellsOpened(string[,] matrix, int cntMines)
         {
             bool isWinner = false;
             int counter = 0;
@@ -170,7 +176,7 @@ namespace Minesweeper
                             Console.WriteLine();
                             goto start;
                         }
-                        bool winner = PichLiSi(minichki, minesCounter);
+                        bool winner = AreAllCellsOpened(minichki, minesCounter);
                         if (winner)
                         {
                             Console.WriteLine("Congratulations! You are the WINNER!\n");
