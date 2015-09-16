@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mines.cs" />
+    <Compile Include="Minichki.cs" />
     <Compile Include="MinesweeperTest.cs" />
     <Compile Include="ScoreBoard.cs" />
   </ItemGroup>

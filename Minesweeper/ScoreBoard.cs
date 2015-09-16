@@ -1,10 +1,12 @@
-﻿using System;
-using System.Linq;
-using Wintellect.PowerCollections;
-
-namespace Minesweeper
+﻿namespace Minesweeper
 {
-    public class ScoreBoard
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Wintellect.PowerCollections;
+
+    class ScoreBoard
     {
         // - moga da izpolzvam OrderedMultiDictionary!
         // - xaxax ne sym li gyzar? a?
