@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ class Minichki
     private const int NUMBER_OF_MINES = 15;
     private const int MINES_FIELD_ROWS = 5;
     private const int MINES_FIELD_COLS = 10;
+
+    IPrinter printer = new Printer();
 
     private static void Display(string[,] matricaNaMinite, bool boomed)
     {
@@ -122,7 +125,7 @@ class Minichki
 
     public void PlayMines()
     {
-        ScoreBoard scoreBoard = new ScoreBoard();
+        IScoreBoard scoreBoard = new ScoreBoard();
         Random randomMines;
         string[,] minichki;
         int row;
@@ -196,7 +199,7 @@ class Minichki
                 {
                     case "top":
                         {
-                            scoreBoard.PrintScoreBoard();
+                            Printer.PrintScoreBoard(scoreBoard);
                             goto enterRowCol;
                         }
                     case "exit":

@@ -48,7 +48,9 @@
   <ItemGroup>
     <Compile Include="Minichki.cs" />
     <Compile Include="MinesweeperTest.cs" />
-    <Compile Include="ScoreBoard.cs" />
+    <Compile Include="ScoreBoard.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

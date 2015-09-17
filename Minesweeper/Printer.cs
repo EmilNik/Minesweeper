@@ -6,35 +6,16 @@
     using System.Text;
     using Wintellect.PowerCollections;
 
-    public class ScoreBoard : IScoreBoard
+    public class Printer : IPrinter
     {
-        private OrderedMultiDictionary<int, string> scoreBoard;
-
-        public ScoreBoard()
-        {
-            this.scoreBoard = new OrderedMultiDictionary<int, string>(true);
-        }
-
-        public void AddPlayer(string playerName, int playerScore)
-        {
-            if (!this.scoreBoard.ContainsKey(playerScore))
-            {
-                this.scoreBoard.Add(playerScore, playerName);
-            }
-            else
-            {
-                this.scoreBoard[playerScore].Add(playerName);
-            }
-        }
-
-        public void PrintScoreBoard()
+        public void PrintScoreBoard(IScoreBoard scoreBoard)
         {
             bool firstFive = false;
             int currentCounter = 1;
 
             Console.WriteLine();
 
-            if (this.scoreBoard.Values.Count == 0)
+            if (scoreBoard.scoreBoard.Values.Count == 0)
             {
                 Console.WriteLine("Scoreboard empty!");
             }
@@ -42,9 +23,9 @@
             {
                 Console.WriteLine("Scoreboard:");
 
-                foreach (int key in this.scoreBoard.Keys.OrderByDescending(obj => obj))
+                foreach (int key in scoreBoard.Keys.OrderByDescending(obj => obj))
                 {
-                    foreach (string person in this.scoreBoard[key])
+                    foreach (string person in scoreBoard[key])
                     {
                         // TODO
                         if (currentCounter < 6)

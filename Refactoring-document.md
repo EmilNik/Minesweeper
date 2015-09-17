@@ -2,6 +2,14 @@
 	-	Renamed the solution from 'WindowsMinchki' to 'Minesweeper'
 	-   Renamed the project to `Minesweeper`.
 	-	Extracted class 'ScoreBoard' in a separate file 'ScoreBoard.cs'.
+		-	Reformatted the sorce code using best C# practices:
+			-	Removed all unneeded empty lines;
+			-	Added an empty line after a closing curly bracket **}**;
+			- 	Added an empty line where this helps reading the code;
+			-	Removed meaningless comments;
+			-	Moved Usings inside he namespace;
+			-	Added the access modifier to the class Scoreboard
+			-	Renamed variable FirstFive to firstFive (variable's names must strat with a lower-case letter)
 	//
 	-   Renamed the main class `Program` to `GameFifteen`.
 	-   Extracted each class in a separate file with a good name: `GameFifteen.cs`, `Board.cs`, `Point.cs`.
