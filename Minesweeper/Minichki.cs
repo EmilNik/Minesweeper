@@ -11,8 +11,6 @@ class Minichki
     private const int MINES_FIELD_ROWS = 5;
     private const int MINES_FIELD_COLS = 10;
 
-    IPrinter printer = new Printer();
-
     private static void Display(string[,] matricaNaMinite, bool boomed)
     {
         Console.WriteLine();
@@ -125,7 +123,7 @@ class Minichki
 
     public void PlayMines()
     {
-        IScoreBoard scoreBoard = new ScoreBoard();
+        ScoreBoard scoreBoard = new ScoreBoard();
         Random randomMines;
         string[,] minichki;
         int row;
@@ -199,7 +197,7 @@ class Minichki
                 {
                     case "top":
                         {
-                            Printer.PrintScoreBoard(scoreBoard);
+                            scoreBoard.PrintScoreBoard();
                             goto enterRowCol;
                         }
                     case "exit":

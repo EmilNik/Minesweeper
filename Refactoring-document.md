@@ -8,9 +8,77 @@
 			- 	Added an empty line where this helps reading the code;
 			-	Removed meaningless comments;
 			-	Moved Usings inside he namespace;
-			-	Added the access modifier to the class Scoreboard
-			-	Renamed variable FirstFive to firstFive (variable's names must strat with a lower-case letter)
+			-	Added the access modifier to the class Scoreboard;
+			-	Renamed variable FirstFive to firstFive (variable's names must strat with a lower-case letter);
+			
+		-	Created an interface IScoreBoard and made the class ScoreBoard inherit it.
+			-	Interface IScoreBoard implements the method AddPlayer();
+			
+		-	Refactoring the method PrintScoreBoard() in class ScoreBoard:
+			-	Before refactoring:
+				bool firstFive = false;
+				int currentCounter = 1;
+	
+				Console.WriteLine();
+	
+				if (this.scoreBoard.Values.Count == 0)
+				{
+					Console.WriteLine("Scoreboard empty!");
+				}
+				else
+				{
+					Console.WriteLine("Scoreboard:");
+	
+					foreach (int key in this.scoreBoard.Keys.OrderByDescending(obj => obj))
+					{
+						foreach (string person in this.scoreBoard[key])
+						{
+							// TODO
+							if (currentCounter < 6)
+							{
+								Console.WriteLine("{0}. {1} --> {2} cells", currentCounter, person, key);
+								currentCounter++;
+							}
+							else
+							{
+								firstFive = true;
+								break;
+							}
+						}
+	
+						if (firstFive)
+						{
+							break;
+						}
+					}
+					
+			-	After refactoring: 
+				var numberOfPrintedNames = 5;
+
+				var keys = this.scoreBoard.Keys.OrderByDescending(obj => obj).ToArray();
+	
+				if (keys.Length < numberOfPrintedNames)
+				{
+					numberOfPrintedNames = keys.Length;
+				}
+	
+				for (int i = 0; i < numberOfPrintedNames; i++)
+				{
+					var key = keys[i];
+					var person = this.scoreBoard[key];
+	
+					Console.WriteLine("{0}. {1} --> {2} cells", (i + 1), person, key);
+	
+				}
+				
+		-	Created IPrinter interface and class Printer that inherits it:
+			-	moved method PrintScoreBoard from class Scoreboard to Printer  
 	//
+	
+	
+	
+	
+	
 	-   Renamed the main class `Program` to `GameFifteen`.
 	-   Extracted each class in a separate file with a good name: `GameFifteen.cs`, `Board.cs`, `Point.cs`.
 	-   …
