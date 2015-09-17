@@ -72,8 +72,46 @@
 				}
 				
 		-	Created IPrinter interface and class Printer that inherits it:
-			-	moved method PrintScoreBoard from class Scoreboard to Printer  
-	//
+			-	moved method PrintScoreBoard from class Scoreboard to Printer
+			
+		-	Created ICommandFactory interface with the method CreateCommand(string commandAsString);
+		
+		-	Created class CommandFactoryWithLazyLoading that inherits the ICommandFactory interface;
+		
+		-	Created ICommand interface with he method Execite(string command)
+		
+		-	Created ScoreBoardCommand, ExitCommand and RestarCommand classes that inherit the ICommand interface;
+			-	Implemented design pattern //SEE THiS PLEASE!!
+			
+		-	Refactoring the class Minichki.cs
+			-	Removed the switch statement:
+			
+				switch (line)
+					{
+						case "top":
+							{
+								scoreBoard.PrintScoreBoard();
+								goto enterRowCol;
+							}
+						case "exit":
+							{
+								Console.WriteLine("\nGood bye!\n");
+								Environment.Exit(0);
+								break;
+							}
+						case "restart":
+							{
+								Console.WriteLine();
+								goto start;
+							}
+					}
+					
+			-	And replaced it with:
+			
+				ICommand command = commandFactory.CreateCommand(line);
+		
+		
+		//
 	
 	
 	

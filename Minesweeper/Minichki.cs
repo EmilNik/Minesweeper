@@ -1,4 +1,5 @@
 ﻿using Minesweeper;
+using Minesweeper.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,6 +125,7 @@ class Minichki
     public void PlayMines()
     {
         ScoreBoard scoreBoard = new ScoreBoard();
+        ICommandFactory commandFactory = new CommandFactoryWithLazyLoading(scoreBoard);
         Random randomMines;
         string[,] minichki;
         int row;
@@ -193,25 +195,7 @@ class Minichki
             }
             else if (proverka(line))
             {
-                switch (line)
-                {
-                    case "top":
-                        {
-                            scoreBoard.PrintScoreBoard();
-                            goto enterRowCol;
-                        }
-                    case "exit":
-                        {
-                            Console.WriteLine("\nGood bye!\n");
-                            Environment.Exit(0);
-                            break;
-                        }
-                    case "restart":
-                        {
-                            Console.WriteLine();
-                            goto start;
-                        }
-                }
+                ICommand command = commandFactory.CreateCommand(line);
             }
             else
             {
