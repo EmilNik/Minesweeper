@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Minesweeper
 {
-    class Printer
+    public class Printer : IPrinter
     {
+        public void PrintScoreBoard(IScoreBoard scoreBoard)
+        {
+
+        }
     }
 }
