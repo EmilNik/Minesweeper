@@ -23,36 +23,44 @@ namespace Minesweeper
         {
             ICommand command;
 
-            if (commandAsString == "top")
+            try
             {
-                if (this.scoreBoardCommand == null)
+                if (commandAsString == "top")
                 {
-                    this.scoreBoardCommand = new ScoreBoardCommand(scoreBoard);
-                }
+                    if (this.scoreBoardCommand == null)
+                    {
+                        this.scoreBoardCommand = new ScoreBoardCommand(scoreBoard);
+                    }
 
-                command = this.scoreBoardCommand;
-            }
-            else if (commandAsString == "exit")
-            {
-                if (this.exitCommand == null)
+                    command = this.scoreBoardCommand;
+                }
+                else if (commandAsString == "exit")
                 {
-                    this.exitCommand = new ExitCommand();
-                }
+                    if (this.exitCommand == null)
+                    {
+                        this.exitCommand = new ExitCommand();
+                    }
 
-                command = this.exitCommand;
-            }
-            else if (commandAsString == "restart")
-            {
-                if (this.restartCommand == null)
+                    command = this.exitCommand;
+                }
+                else if (commandAsString == "restart")
                 {
-                    this.restartCommand = new RestartCommand();
-                }
+                    if (this.restartCommand == null)
+                    {
+                        this.restartCommand = new RestartCommand();
+                    }
 
-                command = this.restartCommand;
+                    command = this.restartCommand;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid command!");
+                }
             }
-            else
+            catch (ArgumentException)
             {
-                throw new ArgumentException("Invalid command!");
+                Console.WriteLine("Invalid command!");
+                return null;
             }
 
             return command;

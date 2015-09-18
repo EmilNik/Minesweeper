@@ -193,24 +193,11 @@ class Minichki
                     Console.WriteLine("Enter valid Row/Col!\n");
                 }
             }
-            else if (proverka(line))
+            else
             {
                 ICommand command = commandFactory.CreateCommand(line);
             }
-            else
-            {
-                Console.WriteLine("Invalid Command!");
-            }
         }
-    }
-    private static bool proverka(string line)
-    {
-        if (line.Equals("top") || line.Equals("restart") || line.Equals("exit"))
-        {
-            return true;
-        }
-        else
-            return false;
     }
     private static bool IsMoveEntered(string line)
     {
