@@ -13,7 +13,7 @@ class Minichki
     private const int MinesFieldCols = 10;
 
 
-    private static bool Boom(string[,] matrix, int minesRow, int minesCol)
+    private static bool DoPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
     {
         bool isKilled = false;
         int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
@@ -65,6 +65,7 @@ class Minichki
         }
         return isWinner;
     }
+
     private static void InitializeMinesField(out string[,] mines, out Random randomMines, out int row, out int col, out int minesCounter, out int revealedCellsCounter, out bool isBoomed, out bool playerWon)
     {
 
@@ -86,9 +87,7 @@ class Minichki
             }
         }
     }
-
    
-
     public void PlayMines()
     {
         Printer printer = new Printer();
@@ -133,7 +132,7 @@ class Minichki
 
                 if ((row >= 0) && (row < minichki.GetLength(0)) && (col >= 0) && (col < minichki.GetLength(1)))
                 {
-                    isBoomed = Boom(minichki, row, col);
+                    isBoomed = DoPlayerBoomed(minichki, row, col);
                     if (isBoomed)
                     {
 
@@ -166,7 +165,7 @@ class Minichki
                     Console.WriteLine("Enter valid Row/Col!\n");
                 }
             }
-            else if (proverka(line))
+            else if (IsCommandEntered(line))
             {
                 ICommand command = commandFactory.CreateCommand(line);
             }
@@ -176,7 +175,8 @@ class Minichki
             }
         }
     }
-    private static bool proverka(string line)
+
+    private static bool IsCommandEntered(string line)
     {
         if (line.Equals("top") || line.Equals("restart") || line.Equals("exit"))
         {
@@ -185,6 +185,7 @@ class Minichki
         else
             return false;
     }
+
     private static bool IsMoveEntered(string line)
     {
         bool validMove = false;
@@ -201,6 +202,7 @@ class Minichki
         }
         return validMove;
     }
+
     private static void FillWithRandomMines(string[,] mines, Random randomMines)
     {
         int minesCounter = 0;
