@@ -87,7 +87,7 @@ class Minichki
             }
         }
     }
-   
+
     public void PlayMines()
     {
         Printer printer = new Printer();
@@ -165,21 +165,16 @@ class Minichki
                     Console.WriteLine("Enter valid Row/Col!\n");
                 }
             }
-<<<<<<< HEAD
-=======
             else if (IsCommandEntered(line))
             {
                 ICommand command = commandFactory.CreateCommand(line);
             }
->>>>>>> origin/master
             else
             {
-                ICommand command = commandFactory.CreateCommand(line);
+                Console.WriteLine("Invalid Command!");
             }
         }
     }
-<<<<<<< HEAD
-=======
 
     private static bool IsCommandEntered(string line)
     {
@@ -191,7 +186,6 @@ class Minichki
             return false;
     }
 
->>>>>>> origin/master
     private static bool IsMoveEntered(string line)
     {
         bool validMove = false;
