@@ -8,5 +8,9 @@ namespace Minesweeper
     public interface IPrinter
     {
         void PrintScoreBoard(IScoreBoard scoreBoard);
+
+        void PrintField(string[,] minesMatrix, bool boomed);
+
+        void PrintInitialMessage();
     }
 }
