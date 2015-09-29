@@ -7,7 +7,7 @@ namespace Minesweeper.Commands
 {
     public class RestartCommand : ICommand
     {
-        public void Execute(string command)
+        public void Execute()
         {
         }
     }

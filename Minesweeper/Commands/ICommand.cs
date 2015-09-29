@@ -7,6 +7,6 @@ namespace Minesweeper.Commands
 {
     public interface ICommand
     {
-        void Execute(string command);
+        void Execute();
     }
 }

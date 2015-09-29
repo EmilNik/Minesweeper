@@ -40,7 +40,7 @@
             for (int i = 0; i < numberOfPrintedNames; i++)
             {
                 var key = keys[i];
-                var person = this.scoreBoard[key];
+                var person = this.scoreBoard[key].ToArray()[0];
 
                 Console.WriteLine("{0}. {1} --> {2} cells", (i + 1), person, key);
 

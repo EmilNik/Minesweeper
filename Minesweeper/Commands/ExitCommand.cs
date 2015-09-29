@@ -7,7 +7,7 @@ namespace Minesweeper.Commands
 {
     public class ExitCommand : ICommand
     {
-        public void Execute(string command)
+        public void Execute()
         {
             Console.WriteLine("\nGood bye!\n");
             Environment.Exit(0);

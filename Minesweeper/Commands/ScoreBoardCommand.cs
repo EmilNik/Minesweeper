@@ -15,7 +15,7 @@ namespace Minesweeper.Commands
         }
             
 
-        public void Execute(string command)
+        public void Execute()
         {
             scoreBoard.PrintScoreBoard();
         }
