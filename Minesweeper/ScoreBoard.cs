@@ -8,11 +8,11 @@
 
     public class ScoreBoard : IScoreBoard
     {
-        private OrderedMultiDictionary<int, string> scoreBoard;
+        private Dictionary<int, string> scoreBoard;
 
         public ScoreBoard()
         {
-            this.scoreBoard = new OrderedMultiDictionary<int, string>(true);
+            this.scoreBoard = new Dictionary<int, string>();
         }
 
         public void AddPlayer(string playerName, int playerScore)
@@ -23,7 +23,7 @@
             }
             else
             {
-                this.scoreBoard[playerScore].Add(playerName);
+                this.scoreBoard.Add(playerScore, playerName);
             }
         }
 
@@ -40,7 +40,7 @@
             for (int i = 0; i < numberOfPrintedNames; i++)
             {
                 var key = keys[i];
-                var person = this.scoreBoard[key].ToArray()[0];
+                var person = this.scoreBoard[key];
 
                 Console.WriteLine("{0}. {1} --> {2} cells", (i + 1), person, key);
 

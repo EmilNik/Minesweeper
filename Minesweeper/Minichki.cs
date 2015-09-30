@@ -12,8 +12,7 @@ class Minichki
     private const int MinesFieldRows = 5;
     private const int MinesFieldCols = 10;
 
-
-    private static bool DoPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
+    private static bool IsPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
     {
         bool isKilled = false;
         int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
@@ -90,8 +89,8 @@ class Minichki
 
     public void PlayMines()
     {
-        Printer printer = new Printer();
         ScoreBoard scoreBoard = new ScoreBoard();
+        Printer printer = new Printer();
         ICommandFactory commandFactory = new CommandFactoryWithLazyLoading(scoreBoard);
 
         Random randomMines;
@@ -132,7 +131,7 @@ class Minichki
 
                 if ((row >= 0) && (row < minichki.GetLength(0)) && (col >= 0) && (col < minichki.GetLength(1)))
                 {
-                    isBoomed = DoPlayerBoomed(minichki, row, col);
+                    isBoomed = IsPlayerBoomed(minichki, row, col);
                     if (isBoomed)
                     {
 

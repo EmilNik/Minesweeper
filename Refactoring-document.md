@@ -116,13 +116,9 @@
 		
 3.  Moved method `PrintInitialMessage()` to class `Printer`.
 
+4.  Get rid of `go to` by adding simple if staement into the beggining of the while loop in `Minichki`;
 
-//
-
-
-9.  Get rid of `go to` by adding simple if staement into the beggining of the while loop in `Minichki`;
-
- while (true)
+	while (true)
         {
             if (isBoomed || playerWon)
             {
@@ -135,6 +131,10 @@
             ....
             ...
      }
+		
+		
+		
+		
 		
 		//
 	
