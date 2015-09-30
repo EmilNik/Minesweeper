@@ -7,8 +7,30 @@ namespace Minesweeper
 {
     public class Printer : IPrinter
     {
-        public void PrintScoreBoard(IScoreBoard scoreBoard)
+        public void PrintScoreBoard(ScoreBoard scoreBoard)
         {
+            var numberOfPrintedNames = 5;
+            var items = from pair in scoreBoard.scoreBoard
+                        orderby pair.Value descending
+                        select pair;
+
+            var keys = items.ToArray();
+
+            if (keys.Count() < numberOfPrintedNames)
+            {
+                numberOfPrintedNames = keys.Count();
+            }
+
+            for (int i = 0; i < numberOfPrintedNames; i++)
+            {
+                var person = keys[i].Key;
+                var key = keys[i].Value;
+
+                Console.WriteLine("{0}. {1} --> {2} cells", (i + 1), person, key);
+
+            }
+
+            Console.WriteLine();
         }
 
         public void PrintField(string[,] minesMatrix, bool boomed)

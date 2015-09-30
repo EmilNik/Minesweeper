@@ -8,16 +8,17 @@ namespace Minesweeper.Commands
     class ScoreBoardCommand : ICommand
     {
         private ScoreBoard scoreBoard;
+        private IPrinter printer;
 
-        public ScoreBoardCommand(ScoreBoard scoreBoard)
+        public ScoreBoardCommand(ScoreBoard scoreBoard, Printer printer)
         {
             this.scoreBoard = scoreBoard;
+            this.printer = printer;
         }
-            
 
         public void Execute()
         {
-            scoreBoard.PrintScoreBoard();
+            this.printer.PrintScoreBoard(this.scoreBoard);
         }
     }
 }

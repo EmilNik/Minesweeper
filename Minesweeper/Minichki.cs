@@ -91,7 +91,7 @@ class Minichki
     {
         ScoreBoard scoreBoard = new ScoreBoard();
         Printer printer = new Printer();
-        ICommandFactory commandFactory = new CommandFactoryWithLazyLoading(scoreBoard);
+        ICommandFactory commandFactory = new CommandFactoryWithLazyLoading(scoreBoard, printer);
 
         Random randomMines;
         string[,] minichki;
