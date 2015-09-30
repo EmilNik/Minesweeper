@@ -26,8 +26,14 @@ namespace Minesweeper
                 var person = keys[i].Key;
                 var key = keys[i].Value;
 
-                Console.WriteLine("{0}. {1} --> {2} cells", (i + 1), person, key);
+                var message = (i + 1) + ". " + person + " --> " + key + " cell";
 
+                if (key != 1)
+                {
+                    message += "s";
+                }
+
+                Console.WriteLine(message);
             }
 
             Console.WriteLine();
