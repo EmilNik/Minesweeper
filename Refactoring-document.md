@@ -135,7 +135,7 @@
 		
 5.	Moved method `PrintScoreBoard()` from class `ScoreBoard` to `Printer`; 
 		
-6.	Changed the `AddPlayer` logig in the class `ScoreBoard`
+6.	Changed the `AddPlayer` logic in the class `ScoreBoard`
 	-	Now one name can have only one score. Each name is unique. If a name already exists in the ScoreBoard it will ovverride the scores it has.
 		
 		//
