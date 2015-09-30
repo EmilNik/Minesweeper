@@ -16,6 +16,7 @@
 			
 		-	Refactoring the method PrintScoreBoard() in class ScoreBoard:
 			-	Before refactoring:
+			
 				bool firstFive = false;
 				int currentCounter = 1;
 	
@@ -53,6 +54,7 @@
 					}
 					
 			-	After refactoring: 
+			
 				var numberOfPrintedNames = 5;
 
 				var keys = this.scoreBoard.Keys.OrderByDescending(obj => obj).ToArray();
@@ -109,7 +111,30 @@
 			-	And replaced it with:
 			
 				ICommand command = commandFactory.CreateCommand(line);
+				
+2.  Moved method `PrintField(string[,] minesMatrix, bool boomed)` to class `Printer`.
 		
+3.  Moved method `PrintInitialMessage()` to class `Printer`.
+
+
+//
+
+
+9.  Get rid of `go to` by adding simple if staement into the beggining of the while loop in `Minichki`;
+
+ while (true)
+        {
+            if (isBoomed || playerWon)
+            {
+                InitializeMinesField(out minichki, out randomMines, out row, out col, out minesCounter, out revealedCellsCounter, out isBoomed, out playerWon);
+
+             FillWithRandomMines(minichki, randomMines);
+
+            }
+            ...
+            ....
+            ...
+     }
 		
 		//
 	
@@ -142,24 +167,5 @@
 5.  Introduced class `ScoreBoard` and moved all related functionality in it.
 
 6.  Moved method `GenerateRandomNumber(int start, int end)` to separate class `RandomUtils`.
-
-7.  Moved method `PrintField(string[,] minesMatrix, bool boomed)` to class `Printer`.
-8.  Moved method `PrintInitialMessage()` to class `Printer`.
-
-9.  Get rid of `go to` by adding simple if staement into the beggining of the while loop in `Minichki`;
-
- while (true)
-        {
-            if (isBoomed || playerWon)
-            {
-                InitializeMinesField(out minichki, out randomMines, out row, out col, out minesCounter, out revealedCellsCounter, out isBoomed, out playerWon);
-
-             FillWithRandomMines(minichki, randomMines);
-
-            }
-            ...
-            ....
-            ...
-     }
      
 10.  ...
