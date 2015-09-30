@@ -8,11 +8,11 @@
 
     public class ScoreBoard : IScoreBoard
     {
-        public readonly SortedDictionary<string, int> scoreBoard;
+        public readonly Dictionary<string, int> scoreBoard;
 
         public ScoreBoard()
         {
-            this.scoreBoard = new SortedDictionary<string, int>();
+            this.scoreBoard = new Dictionary<string, int>();
         }
 
         public void AddPlayer(string playerName, int playerScore)
