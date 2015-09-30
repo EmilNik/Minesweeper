@@ -8,22 +8,25 @@
 
     public class ScoreBoard : IScoreBoard
     {
-        private Dictionary<int, string> scoreBoard;
+        private Dictionary<string, int> scoreBoard;
 
         public ScoreBoard()
         {
-            this.scoreBoard = new Dictionary<int, string>();
+            this.scoreBoard = new Dictionary<string, int>();
         }
 
         public void AddPlayer(string playerName, int playerScore)
         {
-            if (!this.scoreBoard.ContainsKey(playerScore))
+            if (!this.scoreBoard.ContainsKey(playerName))
             {
-                this.scoreBoard.Add(playerScore, playerName);
+                this.scoreBoard.Add(playerName, playerScore);
             }
             else
             {
-                this.scoreBoard.Add(playerScore, playerName);
+                if (this.scoreBoard[playerName] < playerScore)
+                {
+                    this.scoreBoard[playerName] = playerScore;
+                }
             }
         }
 
@@ -39,8 +42,8 @@
 
             for (int i = 0; i < numberOfPrintedNames; i++)
             {
-                var key = keys[i];
-                var person = this.scoreBoard[key];
+                var person = keys[i];
+                var key = this.scoreBoard[person];
 
                 Console.WriteLine("{0}. {1} --> {2} cells", (i + 1), person, key);
 
