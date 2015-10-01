@@ -51,7 +51,9 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\ScoreBoardCommand.cs" />
+    <Compile Include="Field.cs" />
     <Compile Include="ICommandFactory.cs" />
+    <Compile Include="IField.cs" />
     <Compile Include="IPrinter.cs" />
     <Compile Include="IScoreBoard.cs" />
     <Compile Include="Minichki.cs" />
