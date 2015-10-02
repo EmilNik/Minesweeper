@@ -89,25 +89,30 @@ namespace Minesweeper
 
         public void RevealNumber(int row, int col)
         {
-            int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
-            int[] dCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
-            int minesCounter = 0;
-
-            for (int direction = 0; direction < 8; direction++)
+           
+            if (this.mineFiled[row, col] == "")
             {
-                int newRow = dRow[direction] + row;
-                int newCol = dCol[direction] + col;
-                if (IsMoveInBounds(newRow, newCol))
-                {
-                    if (this.MineField[newRow, newCol] == "*")
-                    {
-                        minesCounter++;
-                    }
-                }
+                int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
+                int[] dCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
+                int minesCounter = 0;
 
+                for (int direction = 0; direction < 8; direction++)
+                {
+                    int newRow = dRow[direction] + row;
+                    int newCol = dCol[direction] + col;
+                    if (IsMoveInBounds(newRow, newCol))
+                    {
+                        if (this.MineField[newRow, newCol] == "*")
+                        {
+                            minesCounter++;
+                        }
+                    }
+
+                }
+                this.mineFiled[row, col] = Convert.ToString(minesCounter);
+                this.RevialedCells++;
             }
-            this.mineFiled[row, col] += Convert.ToString(minesCounter);
-            this.RevialedCells++;
+          
         }
 
         private void GetDefaultField()
