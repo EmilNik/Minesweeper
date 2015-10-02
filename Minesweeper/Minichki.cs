@@ -46,8 +46,6 @@ public class Minichki
         return isWinner;
     }
 
-
-
     public void PlayMines()
     {
         ScoreBoard scoreBoard = new ScoreBoard();
@@ -82,16 +80,19 @@ public class Minichki
                 int row = int.Parse(inputParams[0]);
                 int col = int.Parse(inputParams[1]);
 
-                if (field.IsMoveInBounds(row, col))
+                if (field.IsMoveInBounds(row, col) || field.IsCellCkicled(row, col))
                 {
                     isBoomed = IsPlayerBoomed(field.MineField, row, col);
                     if (isBoomed)
                     {
                         printer.PrintField(field.MineField, isBoomed);
-                        Console.Write("\nBooom! You are killed by a mine! ");
-                        Console.WriteLine("You revealed {0} cells without mines.", field.RevialedCells);
+                        //Console.Write("\nBooom! You are killed by a mine! ");
+                        //Console.WriteLine("You revealed {0} cells without mines.", field.RevialedCells);
 
-                        Console.Write("Please enter your name for the top scoreboard: ");
+                        //Console.Write("Please enter your name for the top scoreboard: ");
+
+                        printer.PrintMessageWithoutNewLine($"\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
+                        //printer.PrintMessageWithNewLine($"You revealed {field.RevialedCells} cells without mines.");
                         string currentPlayerName = Console.ReadLine();
                         scoreBoard.AddPlayer(currentPlayerName, field.RevialedCells);
 

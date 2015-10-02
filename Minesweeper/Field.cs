@@ -77,7 +77,14 @@ namespace Minesweeper
 
         public bool IsMoveInBounds(int row, int col)
         {
-            return (row >= 0) && (row < this.Rows) && (col >= 0) && (col < this.Cols);
+            var output = (row >= 0) && (row < this.Rows) && (col >= 0) && (col < this.Cols);
+            return output;
+        }
+
+        public bool IsCellCkicled(int row, int col)
+        {
+            var output = this.mineFiled[row, col] != "" || this.mineFiled[row, col] != "*";
+            return output;
         }
 
         public void RevealNumber(int row, int col)
@@ -105,7 +112,6 @@ namespace Minesweeper
 
         private void GetDefaultField()
         {
-
             for (int i = 0; i < this.Rows; i++)
             {
                 for (int j = 0; j < this.Cols; j++)
@@ -113,7 +119,6 @@ namespace Minesweeper
                     this.mineFiled[i, j] = "";
                 }
             }
-
         }
 
         private void FillWithRandomMines()
@@ -130,6 +135,5 @@ namespace Minesweeper
                 }
             }
         }
-
     }
 }
