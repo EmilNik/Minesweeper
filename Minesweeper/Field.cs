@@ -10,6 +10,10 @@ namespace Minesweeper
         private Random random;
 
         private int numberOfMines;
+        private string[,] mineFiled;
+        private int rows;
+        private int cols;
+        private int revialedCells;
 
         public int NumberOfMines
         {
@@ -23,8 +27,6 @@ namespace Minesweeper
             }
         }
 
-        private string[,] mineFiled;
-
         public string[,] MineField
         {
             get
@@ -37,23 +39,17 @@ namespace Minesweeper
             }
         }
 
-        private int rows;
-
         public int Rows
         {
             get { return this.rows; }
             private set { this.rows = value; }
         }
 
-        private int cols;
-
         public int Cols
         {
             get { return this.cols; }
             private set { this.cols = value; }
         }
-
-        private int revialedCells;
 
         public int RevialedCells
         {

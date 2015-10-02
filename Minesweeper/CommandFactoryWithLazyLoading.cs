@@ -61,7 +61,7 @@ namespace Minesweeper
             }
             catch (ArgumentException)
             {
-                Console.WriteLine("Invalid command!");
+                printer.PrintMessageWithNewLine("Invalid command!");
                 return null;
             }
 

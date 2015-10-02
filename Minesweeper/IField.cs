@@ -12,6 +12,5 @@ namespace Minesweeper
         bool IsMoveInBounds(int row, int col);
 
         void RevealNumber(int row, int col);
-
     }
 }

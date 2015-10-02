@@ -56,23 +56,23 @@ public class Minichki
         Field field = new Field(5, 10, 15);
 
         field.Initialize();
-        
+
         bool isBoomed = false;
         bool playerWon = false;
-        
+
         printer.PrintInitialMessage();
 
         while (true)
         {
-
             if (isBoomed || playerWon)
             {
                 field.Initialize();
                 isBoomed = false;
             }
+
             printer.PrintField(field.MineField, isBoomed);
 
-            Console.Write("Enter row and column: ");
+            printer.PrintMessageWithoutNewLine("Enter row and column: ");
             string line = Console.ReadLine();
             line = line.Trim();
 
