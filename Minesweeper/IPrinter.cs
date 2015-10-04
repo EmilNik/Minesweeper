@@ -11,6 +11,6 @@ namespace Minesweeper
 
         void PrintField(string[,] minesMatrix, bool boomed);
 
-        void PrintInitialMessage();
+        void PrintMessage(string message);
     }
 }

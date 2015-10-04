@@ -58,7 +58,13 @@ public class Minichki
         bool isBoomed = false;
         bool playerWon = false;
 
-        printer.PrintInitialMessage();
+        string startMessage = @"Welcome to the game “Minesweeper”. 
+                               Try to reveal all cells without mines. 
+                               Use   'top' to view the scoreboard,
+                               Use 'restart' to start a new game 
+                               Use and 'exit' to quit  the game.";
+
+        printer.PrintMessageWithNewLine(startMessage);
 
         while (true)
         {
@@ -70,7 +76,7 @@ public class Minichki
 
             printer.PrintField(field.MineField, isBoomed);
 
-            printer.PrintMessageWithoutNewLine("Enter row and column: ");
+            printer.PrintMessage("Enter row and column: ");
             string line = Console.ReadLine();
             line = line.Trim();
 
@@ -91,7 +97,7 @@ public class Minichki
 
                         //Console.Write("Please enter your name for the top scoreboard: ");
 
-                        printer.PrintMessageWithoutNewLine($"\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
+                        printer.PrintMessage("\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
                         //printer.PrintMessageWithNewLine($"You revealed {field.RevialedCells} cells without mines.");
                         string currentPlayerName = Console.ReadLine();
                         scoreBoard.AddPlayer(currentPlayerName, field.RevialedCells);
