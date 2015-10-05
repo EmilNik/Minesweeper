@@ -62,7 +62,7 @@ public class Minichki
                                Try to reveal all cells without mines. 
                                Use   'top' to view the scoreboard,
                                Use 'restart' to start a new game 
-                               Use and 'exit' to quit  the game.";
+                               Use 'exit' to quit  the game.";
 
         printer.PrintMessageWithNewLine(startMessage);
 

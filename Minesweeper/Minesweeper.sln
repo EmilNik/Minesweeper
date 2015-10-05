@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTests", "MyTests\MyTests.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printer.Tests", "Printer.Tests\Printer.Tests.csproj", "{562433C1-BC2C-4AD6-9569-5B07D620FCD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldTests", "..\FieldTests\FieldTests.csproj", "{3BCE22E8-B95C-4A35-97C7-D01769F4553D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,16 @@ Global
 		{562433C1-BC2C-4AD6-9569-5B07D620FCD4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{562433C1-BC2C-4AD6-9569-5B07D620FCD4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{562433C1-BC2C-4AD6-9569-5B07D620FCD4}.Release|x86.ActiveCfg = Release|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3BCE22E8-B95C-4A35-97C7-D01769F4553D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

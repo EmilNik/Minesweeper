@@ -14,5 +14,7 @@ namespace Minesweeper
         bool IsCellCkicled(int row, int col);
 
         void RevealNumber(int row, int col);
+
+        void GetDefaultField();
     }
 }

@@ -66,7 +66,6 @@ namespace Minesweeper
             this.RevialedCells = 0;
         }
 
-
         public void Initialize()
         {
             this.random = new Random();
@@ -115,7 +114,7 @@ namespace Minesweeper
           
         }
 
-        private void GetDefaultField()
+        public void GetDefaultField()
         {
             for (int i = 0; i < this.Rows; i++)
             {
