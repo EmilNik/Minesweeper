@@ -26,7 +26,7 @@ namespace Minesweeper
                 var person = keys[i].Key;
                 var key = keys[i].Value;
 
-                var message = "{i+1}. {person} --> {key} cell";
+                var message = $"{i+1}. {person} --> {key} cell";
 
                 if (key != 1)
                 {
@@ -71,7 +71,7 @@ namespace Minesweeper
             }
             Console.WriteLine("   ---------------------");
         }
-        
+
         public void PrintMessageWithNewLine(string message)
         {
             Console.WriteLine(message+ "\n");
