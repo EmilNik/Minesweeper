@@ -31,7 +31,7 @@ namespace Minesweeper
         {
             if (text.Length < minNumber || text.Length > maxNumber)
             {
-                throw new ArgumentOutOfRangeException($"{argument} must be between {minNumber} and {maxNumber} symbols long");
+                throw new ArgumentOutOfRangeException("{argument} must be between {minNumber} and {maxNumber} symbols long");
             }
         }
     }

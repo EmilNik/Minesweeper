@@ -100,7 +100,7 @@ public class Minichki
 
                         //Console.Write("Please enter your name for the top scoreboard: ");
 
-                        printer.PrintMessage($"\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
+                        printer.PrintMessage("\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
                         //printer.PrintMessageWithNewLine($"You revealed {field.RevialedCells} cells without mines.");
                         string currentPlayerName = Console.ReadLine();
                         scoreBoard.AddPlayer(currentPlayerName, field.RevialedCells);
