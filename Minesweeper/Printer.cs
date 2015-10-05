@@ -26,7 +26,7 @@ namespace Minesweeper
                 var person = keys[i].Key;
                 var key = keys[i].Value;
 
-                var message = "{i+1}. {person} --> {key} cell";
+                var message = $"{i+1}. {person} --> {key} cell";
 
                 if (key != 1)
                 {
@@ -71,12 +71,16 @@ namespace Minesweeper
             }
             Console.WriteLine("   ---------------------");
         }
-        /*
+
         public void PrintInitialMessage()
         {
-            string startMessage = @"Welcome to the game “Minesweeper”. Try to reveal all cells without mines. Use   'top' to view the scoreboard, 'restart' to start a new game and 'exit' to quit  the game.";
+            string startMessage = @"Welcome to the game “Minesweeper”.
+Try to reveal all cells without mines. 
+Use 'top' to view the scoreboard, 
+    'restart' to start a new game and 
+    'exit' to quit  the game.";
             PrintMessageWithNewLine(startMessage + "\n");
-        }*/
+        }
 
         public void PrintMessageWithNewLine(string message)
         {
