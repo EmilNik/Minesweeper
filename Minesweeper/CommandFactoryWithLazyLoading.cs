@@ -40,7 +40,7 @@ namespace Minesweeper
                 {
                     if (this.exitCommand == null)
                     {
-                        this.exitCommand = new ExitCommand();
+                        this.exitCommand = new ExitCommand(printer);
                     }
 
                     command = this.exitCommand;
@@ -56,12 +56,12 @@ namespace Minesweeper
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid command!");
+                    throw new ArgumentException(Messages.InvalidCommand);
                 }
             }
             catch (ArgumentException)
             {
-                printer.PrintMessageWithNewLine("Invalid command!");
+                printer.PrintMessage(Messages.InvalidCommand);
                 return null;
             }
 

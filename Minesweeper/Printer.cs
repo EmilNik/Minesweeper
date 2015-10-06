@@ -26,7 +26,7 @@ namespace Minesweeper
                 var person = keys[i].Key;
                 var key = keys[i].Value;
 
-                var message = "{i+1}. {person} --> {key} cell";
+                var message = $"{i+1}. {person} --> {key} cell";
 
                 if (key != 1)
                 {
@@ -41,8 +41,7 @@ namespace Minesweeper
 
         public void PrintField(string[,] minesMatrix, bool boomed)
         {
-            Console.WriteLine();
-            Console.WriteLine("     0 1 2 3 4 5 6 7 8 9");
+            Console.WriteLine("\n     0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("   ---------------------");
             for (int i = 0; i < minesMatrix.GetLength(0); i++)
             {
@@ -70,11 +69,6 @@ namespace Minesweeper
                 Console.WriteLine("|");
             }
             Console.WriteLine("   ---------------------");
-        }
-
-        public void PrintMessageWithNewLine(string message)
-        {
-            Console.WriteLine(message+ "\n");
         }
 
         public void PrintMessage(string message)

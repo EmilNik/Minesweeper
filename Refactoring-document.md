@@ -139,6 +139,7 @@
 	-	Now one name can have only one score. Each name is unique. If a name already exists in the ScoreBoard it will ovverride the scores it has.
 7.  Introduced a class `Field`( and an interface to it `IField`)	 to hold all field properties and methods: (`Rows`, `Cols`,`NumberOfMines`,the field it self-`MineField`,`RevialedCells`,methods:`Initialize`,`IsMoveInBounds`,`RevealNumber`).
 8.  Modified class `minichki` to work with the previous changes.
+9.  Introduced a class `Messages` and moved all messages to it.Made a few changes in some clases to use the messages !
 		
         
         //

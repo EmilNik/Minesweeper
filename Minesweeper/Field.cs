@@ -82,7 +82,7 @@ namespace Minesweeper
 
         public bool IsCellCkicled(int row, int col)
         {
-            var output = this.mineFiled[row, col] != "" || this.mineFiled[row, col] != "*";
+            var output = this.mineFiled[row, col] != "" && this.mineFiled[row, col] != "*";
             return output;
         }
 

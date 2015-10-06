@@ -9,22 +9,12 @@ using Wintellect.PowerCollections;
 public class Minichki
 {
 
-    private static bool IsPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
+    private bool IsPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
     {
-        bool isKilled = false;
-
-        if (matrix[minesRow, minesCol] == "*")
-        {
-            isKilled = true;
-        }
-        else if ((matrix[minesRow, minesCol] != "") && (matrix[minesRow, minesCol] != "*"))
-        {
-            Console.WriteLine("Illegal Move!");
-        }
-        return isKilled;
+        return matrix[minesRow, minesCol] == "*";
     }
 
-    private static bool DoPlayerWon(string[,] matrix, int minesCount)
+    private  bool DoPlayerWon(string[,] matrix, int minesCount)
     {
         bool isWinner = false;
         int counter = 0;
@@ -59,15 +49,7 @@ public class Minichki
         bool isBoomed = false;
         bool playerWon = false;
 
-
-        string startMessage = @"Welcome to the game “Minesweeper”. 
-                               Try to reveal all cells without mines. 
-                               Use   'top' to view the scoreboard,
-                               Use 'restart' to start a new game 
-                               Use 'exit' to quit  the game.";
-
-        printer.PrintMessageWithNewLine(startMessage);
-
+        printer.PrintMessage(Messages.StartMsg);
 
         while (true)
         {
@@ -79,7 +61,7 @@ public class Minichki
 
             printer.PrintField(field.MineField, isBoomed);
 
-            printer.PrintMessage("Enter row and column: ");
+            printer.PrintMessage(Messages.EnterRowCol);
             string line = Console.ReadLine();
             line = line.Trim();
 
@@ -89,19 +71,13 @@ public class Minichki
                 int row = int.Parse(inputParams[0]);
                 int col = int.Parse(inputParams[1]);
 
-                if (field.IsMoveInBounds(row, col) || field.IsCellCkicled(row, col))
+                if (field.IsMoveInBounds(row, col) && !field.IsCellCkicled(row, col))
                 {
                     isBoomed = IsPlayerBoomed(field.MineField, row, col);
                     if (isBoomed)
                     {
                         printer.PrintField(field.MineField, isBoomed);
-                        //Console.Write("\nBooom! You are killed by a mine! ");
-                        //Console.WriteLine("You revealed {0} cells without mines.", field.RevialedCells);
-
-                        //Console.Write("Please enter your name for the top scoreboard: ");
-
-                        printer.PrintMessage("\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
-                        //printer.PrintMessageWithNewLine($"You revealed {field.RevialedCells} cells without mines.");
+                        printer.PrintMessage($"\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
                         string currentPlayerName = Console.ReadLine();
                         scoreBoard.AddPlayer(currentPlayerName, field.RevialedCells);
 
@@ -114,17 +90,14 @@ public class Minichki
                     if (playerWon)
                     {
                         printer.PrintField(field.MineField, isBoomed);
-                        Console.WriteLine("Congratulations! You are the WINNER!\n");
-
-                        Console.Write("Please enter your name for the top scoreboard: ");
+                        printer.PrintMessage(Messages.Success);
                         string currentPlayerName = Console.ReadLine();
-                        Console.WriteLine();
                         scoreBoard.AddPlayer(currentPlayerName, field.RevialedCells);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Enter valid Row/Col!\n");
+                    printer.PrintMessage(Messages.AlreadyOpenedOrOutOfRange);
                 }
             }
             else
@@ -139,7 +112,7 @@ public class Minichki
         }
     }
 
-    private static bool IsMoveEntered(string line)
+    private  bool IsMoveEntered(string line)
     {
         bool validMove = false;
         try

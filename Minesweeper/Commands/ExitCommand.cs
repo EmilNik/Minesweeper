@@ -7,9 +7,16 @@ namespace Minesweeper.Commands
 {
     public class ExitCommand : ICommand
     {
+        private IPrinter printer;
+
+        public ExitCommand(IPrinter printer)
+        {
+            this.printer = printer;
+        }
         public void Execute()
         {
-            Console.WriteLine("\nGood bye!\n");
+
+            this.printer.PrintMessage(Messages.Bye);
             Environment.Exit(0);
         }
     }
