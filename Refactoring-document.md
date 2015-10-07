@@ -181,3 +181,4 @@
    * Double implementation of data once in **IsMoveEntered()** and in the **if statement** after that!
    * Change PrintField() method way of printing field to remove excessive if-else statements of checking validity. Use some Design Pattern
    * Think of way to implement at least three of each group of patterns - Creational, Structural, Behavior Patterns
+   * Possible introduction of class Player
