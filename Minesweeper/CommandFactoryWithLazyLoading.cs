@@ -20,7 +20,12 @@ namespace Minesweeper
             this.scoreBoard = scoreBoard;
             this.printer = printer;
         }
-
+        
+        /// <summary>
+        /// Creates and returns a scoreBoardCommand, exitCommand or restartCommand depending on the user input. Each command has unique behaviour.
+        /// </summary>
+        /// <param name="commandAsString">User input.</param>
+        /// <returns>A command that has unique behaviour.</returns>
         public ICommand CreateCommand(string commandAsString)
         {
             ICommand command;
@@ -40,7 +45,7 @@ namespace Minesweeper
                 {
                     if (this.exitCommand == null)
                     {
-                        this.exitCommand = new ExitCommand(printer);
+                        this.exitCommand = new ExitCommand();
                     }
 
                     command = this.exitCommand;
@@ -56,12 +61,12 @@ namespace Minesweeper
                 }
                 else
                 {
-                    throw new ArgumentException(Messages.InvalidCommand);
+                    throw new ArgumentException("Invalid command!");
                 }
             }
             catch (ArgumentException)
             {
-                printer.PrintMessage(Messages.InvalidCommand);
+                printer.PrintMessageWithNewLine("Invalid command!");
                 return null;
             }
 

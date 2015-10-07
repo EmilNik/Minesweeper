@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Minesweeper.Commands
 {
+    /// <summary>
+    /// The exit command cares about printing the scoreBoard when the command is executed.
+    /// </summary>
     class ScoreBoardCommand : ICommand
     {
         private ScoreBoard scoreBoard;

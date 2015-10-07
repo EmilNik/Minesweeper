@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Minesweeper
+﻿namespace Minesweeper
 {
+    using System;
+    using System.Linq;
+
+    /// <summary>
+    /// The class Printer cares about printing. It stores all kinds of strings that are to be printed and also prints given strings.
+    /// </summary>
     public class Printer : IPrinter
     {
+        /// <summary>
+        /// Prints the highscores.
+        /// </summary>
+        /// <param name="scoreBoard">The scoreBoard that holds the highscores.</param>
         public void PrintScoreBoard(ScoreBoard scoreBoard)
         {
             var numberOfPrintedNames = 5;
@@ -39,6 +44,11 @@ namespace Minesweeper
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Prints the field.
+        /// </summary>
+        /// <param name="minesMatrix">An array that holds information about each cell of the field.</param>
+        /// <param name="boomed">A bool that hold information if the user has hit a mine.</param>
         public void PrintField(string[,] minesMatrix, bool boomed)
         {
             Console.WriteLine("\n     0 1 2 3 4 5 6 7 8 9");
@@ -72,9 +82,22 @@ namespace Minesweeper
             Console.WriteLine("   ---------------------");
         }
 
+        /// <summary>
+        /// Prints a given message without a new line after the end of the message.
+        /// </summary>
+        /// <param name="message">Message to be printed.</param>
         public void PrintMessage(string message)
         {
             Console.Write(message);
+        }
+
+        /// <summary>
+        /// Prints a given message with a new line at the end.
+        /// </summary>
+        /// <param name="message">Message to be printed.</param>
+        public void PrintMessageWithNewLine(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }

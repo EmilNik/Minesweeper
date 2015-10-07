@@ -5,18 +5,14 @@ using System.Text;
 
 namespace Minesweeper.Commands
 {
+    /// <summary>
+    /// The exit command cares about closing the application when the command is executed.
+    /// </summary>
     public class ExitCommand : ICommand
     {
-        private IPrinter printer;
-
-        public ExitCommand(IPrinter printer)
-        {
-            this.printer = printer;
-        }
         public void Execute()
         {
-
-            this.printer.PrintMessage(Messages.Bye);
+            Console.WriteLine("\nGood bye!\n");
             Environment.Exit(0);
         }
     }
