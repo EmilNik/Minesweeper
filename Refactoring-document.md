@@ -187,4 +187,4 @@
    * Possible introduction of class Player:
    	* playerName
    	* score
-* Think of a way to get rid of repeating code for **a player** and **a playerWon**. Reconstruction of the code logic flow might be needed.
+   * Think of a way to get rid of repeating code for **a player** and **a playerWon**. Reconstruction of the code logic flow might be needed.
