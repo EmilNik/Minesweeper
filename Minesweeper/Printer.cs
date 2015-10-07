@@ -52,22 +52,23 @@ namespace Minesweeper
                     {
                         Console.Write(" ?");
                     }
-                    if (!(boomed) && (minesMatrix[i, j] != "") && (minesMatrix[i, j] != "*"))
+                    else if (!(boomed) && (minesMatrix[i, j] != "") && (minesMatrix[i, j] != "*"))
                     {
                         Console.Write(" {0}", minesMatrix[i, j]);
                     }
-                    if ((boomed) && (minesMatrix[i, j] == ""))
+                    else if ((boomed) && (minesMatrix[i, j] == ""))
                     {
                         Console.Write(" -");
                     }
-                    if ((boomed) && (minesMatrix[i, j] != ""))
+                    else if ((boomed) && (minesMatrix[i, j] != ""))
                     {
                         Console.Write(" {0}", minesMatrix[i, j]);
                     }
-
                 }
+
                 Console.WriteLine("|");
             }
+
             Console.WriteLine("   ---------------------");
         }
 
