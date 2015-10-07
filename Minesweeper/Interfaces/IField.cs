@@ -11,7 +11,7 @@ namespace Minesweeper
 
         bool IsMoveInBounds(int row, int col);
 
-        bool IsCellCkicled(int row, int col);
+        bool IsCellClickled(int row, int col);
 
         void RevealNumber(int row, int col);
 

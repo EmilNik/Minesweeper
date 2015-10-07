@@ -51,7 +51,7 @@ namespace Minesweeper
             private set { this.cols = value; }
         }
 
-        public int RevialedCells
+        public int RevealedCells
         {
             get { return this.revealedCells; }
             set { this.revealedCells = value; }
@@ -63,13 +63,13 @@ namespace Minesweeper
             this.Rows = rows;
             this.Cols = cols;
             this.mineField = new string[this.Rows, this.Cols];
-            this.RevialedCells = 0;
+            this.RevealedCells = 0;
         }
 
         public void Initialize()
         {
             this.random = new Random();
-            this.RevialedCells = 0;
+            this.RevealedCells = 0;
             GetDefaultField();
             FillWithRandomMines();
         }
@@ -80,7 +80,7 @@ namespace Minesweeper
             return output;
         }
 
-        public bool IsCellCkicled(int row, int col)
+        public bool IsCellClickled(int row, int col)
         {
             var output = this.mineField[row, col] != "" && this.mineField[row, col] != "*";
             return output;
@@ -109,7 +109,7 @@ namespace Minesweeper
 
                 }
                 this.mineField[row, col] = Convert.ToString(minesCounter);
-                this.RevialedCells++;
+                this.RevealedCells++;
             }
           
         }

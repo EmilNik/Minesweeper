@@ -48,7 +48,7 @@ public class Minichki
         bool isBoomed = false;
         bool playerWon = false;
 
-        printer.PrintMessage(Messages.StartMsg);
+        printer.PrintMessage(Messages.StartMessage);
 
         while (true)
         {
@@ -70,7 +70,7 @@ public class Minichki
                 int row = int.Parse(inputParams[0]);
                 int col = int.Parse(inputParams[1]);
 
-                if (field.IsMoveInBounds(row, col) && !field.IsCellCkicled(row, col))
+                if (field.IsMoveInBounds(row, col) && !field.IsCellClickled(row, col))
                 {
                     isBoomed = IsPlayerBoomed(field.MineField, row, col);
                     if (isBoomed)
@@ -78,7 +78,7 @@ public class Minichki
                         printer.PrintField(field.MineField, isBoomed);
                         printer.PrintMessage("\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
                         string currentPlayerName = Console.ReadLine();
-                        scoreBoard.AddPlayer(currentPlayerName, field.RevialedCells);
+                        scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
 
                         Console.WriteLine();
                     }
@@ -91,7 +91,7 @@ public class Minichki
                         printer.PrintField(field.MineField, isBoomed);
                         printer.PrintMessage(Messages.Success);
                         string currentPlayerName = Console.ReadLine();
-                        scoreBoard.AddPlayer(currentPlayerName, field.RevialedCells);
+                        scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
                     }
                 }
                 else
