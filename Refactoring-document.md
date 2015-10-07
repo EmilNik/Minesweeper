@@ -177,6 +177,8 @@
 7. ...
 
 8. TODOs
+   * Not sure but DoPlayerWon() method in Minichki **counter** variable and **for loop** are unnecessary -
+     **counter variable** will always be equal to **this.RevealedCells variable**???
    * GetDefaultField() to become private method, used only in the Initiliaze method of the Field class
    * Double implementation of data once in **IsMoveEntered()** and in the **if statement** after that!
    * Change PrintField() method way of printing field to remove excessive if-else statements of checking validity. Use some Design Pattern
