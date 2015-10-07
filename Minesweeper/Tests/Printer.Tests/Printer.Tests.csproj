@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Minesweeper.csproj">
+    <ProjectReference Include="..\..\Minesweeper.csproj">
       <Project>{74466889-40c3-463b-be13-8f28e70d0af8}</Project>
       <Name>Minesweeper</Name>
     </ProjectReference>
