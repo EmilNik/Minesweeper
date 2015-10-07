@@ -10,10 +10,10 @@ namespace Minesweeper
         private Random random;
 
         private int numberOfMines;
-        private string[,] mineFiled;
+        private string[,] mineField;
         private int rows;
         private int cols;
-        private int revialedCells;
+        private int revealedCells;
 
         public int NumberOfMines
         {
@@ -31,11 +31,11 @@ namespace Minesweeper
         {
             get
             {
-                return this.mineFiled;
+                return this.mineField;
             }
             private set
             {
-                this.mineFiled = value;
+                this.mineField = value;
             }
         }
 
@@ -53,8 +53,8 @@ namespace Minesweeper
 
         public int RevialedCells
         {
-            get { return this.revialedCells; }
-            set { this.revialedCells = value; }
+            get { return this.revealedCells; }
+            set { this.revealedCells = value; }
         }
 
         public Field(int rows, int cols, int numbOfMines)
@@ -62,7 +62,7 @@ namespace Minesweeper
             this.NumberOfMines = numbOfMines;
             this.Rows = rows;
             this.Cols = cols;
-            this.mineFiled = new string[this.Rows, this.Cols];
+            this.mineField = new string[this.Rows, this.Cols];
             this.RevialedCells = 0;
         }
 
@@ -82,14 +82,14 @@ namespace Minesweeper
 
         public bool IsCellCkicled(int row, int col)
         {
-            var output = this.mineFiled[row, col] != "" && this.mineFiled[row, col] != "*";
+            var output = this.mineField[row, col] != "" && this.mineField[row, col] != "*";
             return output;
         }
 
         public void RevealNumber(int row, int col)
         {
            
-            if (this.mineFiled[row, col] == "")
+            if (this.mineField[row, col] == "")
             {
                 int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
                 int[] dCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
@@ -108,7 +108,7 @@ namespace Minesweeper
                     }
 
                 }
-                this.mineFiled[row, col] = Convert.ToString(minesCounter);
+                this.mineField[row, col] = Convert.ToString(minesCounter);
                 this.RevialedCells++;
             }
           
@@ -120,7 +120,7 @@ namespace Minesweeper
             {
                 for (int j = 0; j < this.Cols; j++)
                 {
-                    this.mineFiled[i, j] = "";
+                    this.mineField[i, j] = "";
                 }
             }
         }
@@ -132,9 +132,9 @@ namespace Minesweeper
             {
                 int randomRow = this.random.Next(0, this.Rows);
                 int randomCol = this.random.Next(0, this.cols);
-                if (this.mineFiled[randomRow, randomCol] == "")
+                if (this.mineField[randomRow, randomCol] == "")
                 {
-                    this.mineFiled[randomRow, randomCol] += "*";
+                    this.mineField[randomRow, randomCol] += "*";
                     minesCounter++;
                 }
             }

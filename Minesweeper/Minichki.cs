@@ -8,7 +8,6 @@ using Wintellect.PowerCollections;
 
 public class Minichki
 {
-
     private bool IsPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
     {
         return matrix[minesRow, minesCol] == "*";
@@ -77,7 +76,7 @@ public class Minichki
                     if (isBoomed)
                     {
                         printer.PrintField(field.MineField, isBoomed);
-                        printer.PrintMessage($"\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
+                        printer.PrintMessage("\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
                         string currentPlayerName = Console.ReadLine();
                         scoreBoard.AddPlayer(currentPlayerName, field.RevialedCells);
 
