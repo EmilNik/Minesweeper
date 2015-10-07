@@ -185,6 +185,6 @@
    * Change PrintField() method way of printing field to remove excessive if-else statements of checking validity. Use some Design Pattern
    * Think of way to implement at least three of each group of patterns - Creational, Structural, Behavior Patterns
    * Possible introduction of class Player:
-   	* playerName
-   	* score
+	1. playerName
+   	2. score
    * Think of a way to get rid of repeating code for **a player** and **a playerWon**. Reconstruction of the code logic flow might be needed.
