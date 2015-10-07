@@ -76,7 +76,11 @@ public class Minichki
                     if (isBoomed)
                     {
                         printer.PrintField(field.MineField, isBoomed);
-                        printer.PrintMessage("\nBooom! You are killed by a mine! \nYou revealed {field.RevialedCells} cells without mines.\nPlease enter your name for the top scoreboard: ");
+                        printer.PrintMessage(
+                            string.Format(Environment.NewLine + "Booom! You are killed by a mine!"  + 
+                            Environment.NewLine + "You revealed {0} cells without mines." + 
+                            Environment.NewLine + "Please enter your name for the top scoreboard: ", 
+                            field.RevealedCells));
                         string currentPlayerName = Console.ReadLine();
                         scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
 
@@ -116,6 +120,7 @@ public class Minichki
         bool validMove = false;
         try
         {
+            //TODO Validate wrong movements with the appropriate exception messages
             string[] inputParams = line.Split();
             int row = int.Parse(inputParams[0]);
             int col = int.Parse(inputParams[1]);
@@ -125,6 +130,7 @@ public class Minichki
         {
             validMove = false;
         }
+
         return validMove;
     }
 
