@@ -178,6 +178,6 @@
 
 8. TODOs
    * GetDefaultField() to become private method, used only in the Initiliaze method of the Field class
-   * Validate  values for row and column in method IsMoveEntered() entered by the user with appropriate user-friendly exception message. Double implementation of data once in *IsMoveEntered()* and in the *if statement* after that!
+   * Validate  values for row and column in method IsMoveEntered() entered by the user with appropriate user-friendly exception message. Double implementation of data once in **IsMoveEntered()** and in the **if statement** after that!
    * Change PrintField() method way of printing field to remove excessive if-else statements of checking validity. Use some Design Pattern
    * Think of way to implement at least three of each group of patterns - Creational, Structural, Behavior Patterns
