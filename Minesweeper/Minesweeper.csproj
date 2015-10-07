@@ -48,21 +48,27 @@
   <ItemGroup>
     <Compile Include="CommandFactoryWithLazyLoading.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
-    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\ScoreBoardCommand.cs" />
-    <Compile Include="ICommandFactory.cs" />
-    <Compile Include="IPrinter.cs" />
-    <Compile Include="IScoreBoard.cs" />
+    <Compile Include="Field.cs" />
+    <Compile Include="Interfaces\ICommandFactory.cs" />
+    <Compile Include="Interfaces\IField.cs" />
+    <Compile Include="Interfaces\IPrinter.cs" />
+    <Compile Include="Interfaces\IScoreBoard.cs" />
+    <Compile Include="Interfaces\IValidator.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="Minichki.cs" />
     <Compile Include="MinesweeperTest.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="ScoreBoard.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="Tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

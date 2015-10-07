@@ -9,14 +9,16 @@ namespace Minesweeper
     public class CommandFactoryWithLazyLoading : ICommandFactory
     {
         private ScoreBoard scoreBoard;
+        private Printer printer;
 
         private ICommand scoreBoardCommand;
         private ICommand exitCommand;
         private ICommand restartCommand;
 
-        public CommandFactoryWithLazyLoading(ScoreBoard scoreBoard)
+        public CommandFactoryWithLazyLoading(ScoreBoard scoreBoard, Printer printer)
         {
             this.scoreBoard = scoreBoard;
+            this.printer = printer;
         }
 
         public ICommand CreateCommand(string commandAsString)
@@ -29,7 +31,7 @@ namespace Minesweeper
                 {
                     if (this.scoreBoardCommand == null)
                     {
-                        this.scoreBoardCommand = new ScoreBoardCommand(scoreBoard);
+                        this.scoreBoardCommand = new ScoreBoardCommand(scoreBoard, printer);
                     }
 
                     command = this.scoreBoardCommand;
@@ -38,7 +40,7 @@ namespace Minesweeper
                 {
                     if (this.exitCommand == null)
                     {
-                        this.exitCommand = new ExitCommand();
+                        this.exitCommand = new ExitCommand(printer);
                     }
 
                     command = this.exitCommand;
@@ -54,12 +56,12 @@ namespace Minesweeper
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid command!");
+                    throw new ArgumentException(Messages.InvalidCommand);
                 }
             }
             catch (ArgumentException)
             {
-                Console.WriteLine("Invalid command!");
+                printer.PrintMessage(Messages.InvalidCommand);
                 return null;
             }
 

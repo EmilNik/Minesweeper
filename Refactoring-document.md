@@ -133,10 +133,16 @@
      }
 		
 		
+5.	Moved method `PrintScoreBoard()` from class `ScoreBoard` to `Printer`; 
 		
+6.	Changed the `AddPlayer` logic in the class `ScoreBoard`
+	-	Now one name can have only one score. Each name is unique. If a name already exists in the ScoreBoard it will ovverride the scores it has.
+7.  Introduced a class `Field`( and an interface to it `IField`)	 to hold all field properties and methods: (`Rows`, `Cols`,`NumberOfMines`,the field it self-`MineField`,`RevialedCells`,methods:`Initialize`,`IsMoveInBounds`,`RevealNumber`).
+8.  Modified class `minichki` to work with the previous changes.
+9.  Introduced a class `Messages` and moved all messages to it.Made a few changes in some clases to use the messages !
 		
-		
-		//
+        
+        //
 	
 	
 	
@@ -168,4 +174,17 @@
 
 6.  Moved method `GenerateRandomNumber(int start, int end)` to separate class `RandomUtils`.
      
-10.  ...
+7. ...
+
+8. TODOs (some thoughts on the game) 
+   * Not sure but in DoPlayerWon() method, in Minichki class, **counter** variable and **for loop** are unnecessary -
+     **counter variable** will always be equal to **this.RevealedCells variable**???
+   * IsCellClicked() method is a little ambigous(hard to understand) with so many negations. See if negation can be skipped! 
+   * GetDefaultField() to become private method, used only in the Initiliaze method of the Field class
+   * Double implementation of input data once in **IsMoveEntered()** and in the **if statement** after that!
+   * Change PrintField() method way of printing field to remove excessive if-else statements of checking validity. Use some Design Pattern
+   * Think of way to implement at least three of each group of patterns - Creational, Structural, Behavior Patterns
+   * Possible introduction of class Player:
+     - playerName
+     - score
+   * Think of a way to get rid of repeating code for **a player** and **a playerWon**. Reconstruction of the code logic flow might be needed.
