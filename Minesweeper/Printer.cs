@@ -1,6 +1,7 @@
 ﻿namespace Minesweeper
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -8,14 +9,20 @@
     /// </summary>
     public class Printer : IPrinter
     {
+        private Dictionary<string, int> scoreBoard;
+
+        public Printer(Dictionary<string, int> scoreBoard)
+        {
+            this.scoreBoard = scoreBoard;
+        }
         /// <summary>
         /// Prints the highscores.
         /// </summary>
         /// <param name="scoreBoard">The scoreBoard that holds the highscores.</param>
-        public void PrintScoreBoard(ScoreBoard scoreBoard)
+        public void PrintScoreBoard()
         {
             var numberOfPrintedNames = 5;
-            var items = from pair in scoreBoard.scoreBoard
+            var items = from pair in this.scoreBoard
                         orderby pair.Value descending
                         select pair;
 
@@ -31,7 +38,7 @@
                 var person = keys[i].Key;
                 var key = keys[i].Value;
 
-                var message = @"{i+1}. {person} --> {key} cell";
+                var message = $"{i+1}. {person} --> {key} cell";
 
                 if (key != 1)
                 {
@@ -98,6 +105,11 @@
         public void PrintMessageWithNewLine(string message)
         {
             Console.WriteLine(message);
+        }
+
+        public void PrintMessage(string message, int openedCells)
+        {
+            Console.WriteLine(message, openedCells);
         }
     }
 }

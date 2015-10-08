@@ -130,7 +130,7 @@
             ...
             ....
             ...
-     }
+     		}
 		
 		
 5.	Moved method `PrintScoreBoard()` from class `ScoreBoard` to `Printer`; 
@@ -140,8 +140,32 @@
 7.  Introduced a class `Field`( and an interface to it `IField`)	 to hold all field properties and methods: (`Rows`, `Cols`,`NumberOfMines`,the field it self-`MineField`,`RevialedCells`,methods:`Initialize`,`IsMoveInBounds`,`RevealNumber`).
 8.  Modified class `minichki` to work with the previous changes.
 9.  Introduced a class `Messages` and moved all messages to it.Made a few changes in some clases to use the messages !
-		
-        
+10.  Implemented `RestartCommand` and refactor `MinesweeperEngin` while loop: extracted metod `EndGame` to simplify logic!
+
+ 			private void EndGame(bool isBoomed, bool playerWon)
+       		{
+            string message;
+
+            if (playerWon)
+            {
+                message = Messages.Success;
+            }
+            else if (isBoomed)
+            {
+                message = Messages.BoomMessage;
+            }
+            else
+            {
+                return;
+            }
+            printer.PrintField(field.MineField, isBoomed);
+            printer.PrintMessage(message, field.RevealedCells);
+            string currentPlayerName = Console.ReadLine();
+            scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
+        	}
+            
+            
+11.	....
         //
 	
 	

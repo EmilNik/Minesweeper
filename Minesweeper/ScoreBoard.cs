@@ -40,6 +40,7 @@
                     this.scoreBoard[playerName] = playerScore;
                 }
             }
+
         }
     }
 }

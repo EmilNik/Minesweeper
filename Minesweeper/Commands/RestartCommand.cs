@@ -10,8 +10,20 @@
     /// </summary>
     public class RestartCommand : ICommand
     {
+        private readonly IField field;
+
+        public RestartCommand(IField field)
+        {
+            if (field == null)
+            {
+                throw new ArgumentNullException("game");
+            }
+
+            this.field = field;
+        }
         public void Execute()
         {
+            this.field.Initialize();
         }
     }
 }

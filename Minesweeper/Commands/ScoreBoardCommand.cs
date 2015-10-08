@@ -10,18 +10,16 @@
     /// </summary>
     class ScoreBoardCommand : ICommand
     {
-        private ScoreBoard scoreBoard;
         private IPrinter printer;
 
-        public ScoreBoardCommand(ScoreBoard scoreBoard, Printer printer)
+        public ScoreBoardCommand(IPrinter printer)
         {
-            this.scoreBoard = scoreBoard;
             this.printer = printer;
         }
 
         public void Execute()
         {
-            this.printer.PrintScoreBoard(this.scoreBoard);
+            this.printer.PrintScoreBoard();
         }
     }
 }

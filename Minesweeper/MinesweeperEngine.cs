@@ -11,6 +11,16 @@
 
     public class MinesweeperEngine
     {
+        private ScoreBoard scoreBoard;
+
+        private IPrinter printer;
+
+        private IValidator validator;
+
+        private Field field;
+
+        private ICommandFactory commandFactory;
+
         private bool IsPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
         {
             return matrix[minesRow, minesCol] == "*";
@@ -40,11 +50,11 @@
 
         public void PlayMines()
         {
-            ScoreBoard scoreBoard = new ScoreBoard();
-            Printer printer = new Printer();
-            ICommandFactory commandFactory = new CommandFactoryWithLazyLoading(scoreBoard, printer);
-            IValidator validator = new Validator();
-            Field field = new Field(5, 10, 15);
+            this.scoreBoard = new ScoreBoard();
+            this.printer = new Printer(scoreBoard.scoreBoard);
+            this.validator = new Validator();
+            this.field = new Field(5, 10, 15);
+            this.commandFactory = new CommandFactoryWithLazyLoading(printer, field);
 
             field.Initialize();
 
@@ -76,30 +86,11 @@
                     if (field.IsMoveInBounds(row, col) && !field.IsCellClickled(row, col))
                     {
                         isBoomed = IsPlayerBoomed(field.MineField, row, col);
-                        if (isBoomed)
-                        {
-                            printer.PrintField(field.MineField, isBoomed);
-                            printer.PrintMessage(
-                                string.Format(Environment.NewLine + "Booom! You are killed by a mine!" +
-                                Environment.NewLine + "You revealed {0} cells without mines." +
-                                Environment.NewLine + "Please enter your name for the top scoreboard: ",
-                                field.RevealedCells));
-                            string currentPlayerName = Console.ReadLine();
-                            scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
+                        playerWon = DoPlayerWon(field.MineField, field.NumberOfMines);
 
-                            Console.WriteLine();
-                        }
+                        EndGame(isBoomed, playerWon);
 
                         field.RevealNumber(row, col);
-
-                        playerWon = DoPlayerWon(field.MineField, field.NumberOfMines);
-                        if (playerWon)
-                        {
-                            printer.PrintField(field.MineField, isBoomed);
-                            printer.PrintMessage(Messages.Success);
-                            string currentPlayerName = Console.ReadLine();
-                            scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
-                        }
                     }
                     else
                     {
@@ -117,6 +108,29 @@
                 }
             }
         }
+
+        private void EndGame(bool isBoomed, bool playerWon)
+        {
+            string message;
+
+            if (playerWon)
+            {
+                message = Messages.Success;
+            }
+            else if (isBoomed)
+            {
+                message = Messages.BoomMessage;
+            }
+            else
+            {
+                return;
+            }
+            printer.PrintField(field.MineField, isBoomed);
+            printer.PrintMessage(message, field.RevealedCells);
+            string currentPlayerName = Console.ReadLine();
+            scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
+        }
+
 
         /// <summary>
         /// Checks if user input is a valid move and returns a bool that is true if the move is valid and false if the move is not valid.

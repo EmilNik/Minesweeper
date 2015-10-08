@@ -16,8 +16,7 @@
                                Use 'exit' to quit  the game.";
 
         public const string EnterRowCol = "Enter row and column: ";
-
-        //TODO :D
+        
         public const string BoomMessage = "\nBooom! You are killed by a mine! \nYou revealed {0} cells without mines.\nPlease enter your name for the top scoreboard: ";
 
         public const string Success = "Congratulations! You are the WINNER!\nPlease enter your name for the top scoreboard: ";

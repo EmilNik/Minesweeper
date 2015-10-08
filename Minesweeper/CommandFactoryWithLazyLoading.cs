@@ -9,17 +9,17 @@
 
     public class CommandFactoryWithLazyLoading : ICommandFactory
     {
-        private ScoreBoard scoreBoard;
-        private Printer printer;
+        private IPrinter printer;
+        private IField field;
 
         private ICommand scoreBoardCommand;
         private ICommand exitCommand;
         private ICommand restartCommand;
 
-        public CommandFactoryWithLazyLoading(ScoreBoard scoreBoard, Printer printer)
+        public CommandFactoryWithLazyLoading(IPrinter printer, IField field)
         {
-            this.scoreBoard = scoreBoard;
             this.printer = printer;
+            this.field = field;
         }
         
         /// <summary>
@@ -37,7 +37,7 @@
                 {
                     if (this.scoreBoardCommand == null)
                     {
-                        this.scoreBoardCommand = new ScoreBoardCommand(scoreBoard, printer);
+                        this.scoreBoardCommand = new ScoreBoardCommand(this.printer);
                     }
 
                     command = this.scoreBoardCommand;
@@ -55,7 +55,7 @@
                 {
                     if (this.restartCommand == null)
                     {
-                        this.restartCommand = new RestartCommand();
+                        this.restartCommand = new RestartCommand(this.field);
                     }
 
                     command = this.restartCommand;
