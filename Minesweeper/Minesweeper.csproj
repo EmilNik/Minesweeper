@@ -59,7 +59,7 @@
     <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Minichki.cs" />
-    <Compile Include="MinesweeperTest.cs" />
+    <Compile Include="AppStart.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="ScoreBoard.cs">
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
