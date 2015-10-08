@@ -58,7 +58,7 @@
     <Compile Include="Interfaces\IScoreBoard.cs" />
     <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Messages.cs" />
-    <Compile Include="Minichki.cs" />
+    <Compile Include="MinesweeperEngine.cs" />
     <Compile Include="AppStart.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="ScoreBoard.cs">
