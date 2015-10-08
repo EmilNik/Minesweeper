@@ -174,7 +174,7 @@
 
 6.  Moved method `GenerateRandomNumber(int start, int end)` to separate class `RandomUtils`.
      
-7. ...
+7. All usings moved within the namespace of the project
 
 8. TODOs (some thoughts on the game) 
    * Not sure but in DoPlayerWon() method, in Minichki class, **counter** variable and **for loop** are unnecessary -
