@@ -204,7 +204,13 @@
 
 9. Class Minichki renamed to MinesweeperEngine
 
-10. TODOs (some thoughts on the game) 
+10. Design Patterns
+	1. Creational
+	2. Structural
+		* Facade pattern implemented by class MinesweeperEngine introducing PlayMines() method
+	3. Behavior
+
+11. TODOs (some thoughts on the game) 
    * Not sure but in DoPlayerWon() method, in Minichki class, **counter** variable and **for loop** are unnecessary -
      **counter variable** will always be equal to **this.RevealedCells variable**???
    * IsCellClicked() method is a little ambigous(hard to understand) with so many negations. See if negation can be skipped! 
