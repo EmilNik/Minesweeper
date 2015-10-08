@@ -1,4 +1,4 @@
-﻿class MinesweeperTest
+﻿public class MinesweeperTest
 {
     public static void Main(string[] args)
     {

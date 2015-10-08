@@ -1,142 +1,146 @@
-﻿using Minesweeper;
-using Minesweeper.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Wintellect.PowerCollections;
-
-public class Minichki
+﻿namespace Minesweeper
 {
-    private bool IsPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
-    {
-        return matrix[minesRow, minesCol] == "*";
-    }
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Wintellect.PowerCollections;
 
-    private  bool DoPlayerWon(string[,] matrix, int minesCount)
+    using Minesweeper;
+    using Minesweeper.Commands;
+
+    public class Minichki
     {
-        bool isWinner = false;
-        int counter = 0;
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        private bool IsPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
-            {
-                if ((matrix[i, j] != "") && (matrix[i, j] != "*"))
-                {
-                    counter++;
-                }
-            }
-
+            return matrix[minesRow, minesCol] == "*";
         }
-        if (counter == matrix.Length - minesCount)
+
+        private bool DoPlayerWon(string[,] matrix, int minesCount)
         {
-            isWinner = true;
-        }
-        return isWinner;
-    }
-
-    public void PlayMines()
-    {
-        ScoreBoard scoreBoard = new ScoreBoard();
-        Printer printer = new Printer();
-        ICommandFactory commandFactory = new CommandFactoryWithLazyLoading(scoreBoard, printer);
-        IValidator validator = new Validator();
-        Field field = new Field(5, 10, 15);
-
-        field.Initialize();
-
-        bool isBoomed = false;
-        bool playerWon = false;
-
-        printer.PrintMessage(Messages.StartMessage);
-
-        while (true)
-        {
-            if (isBoomed || playerWon)
+            bool isWinner = false;
+            int counter = 0;
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                field.Initialize();
-                isBoomed = false;
-            }
-
-            printer.PrintField(field.MineField, isBoomed);
-
-            printer.PrintMessage(Messages.EnterRowCol);
-            string line = Console.ReadLine();
-            line = line.Trim();
-
-            if (IsMoveEntered(line))
-            {
-                string[] inputParams = line.Split();
-                int row = int.Parse(inputParams[0]);
-                int col = int.Parse(inputParams[1]);
-
-                if (field.IsMoveInBounds(row, col) && !field.IsCellClickled(row, col))
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    isBoomed = IsPlayerBoomed(field.MineField, row, col);
-                    if (isBoomed)
+                    if ((matrix[i, j] != "") && (matrix[i, j] != "*"))
                     {
-                        printer.PrintField(field.MineField, isBoomed);
-                        printer.PrintMessage(
-                            string.Format(Environment.NewLine + "Booom! You are killed by a mine!"  + 
-                            Environment.NewLine + "You revealed {0} cells without mines." + 
-                            Environment.NewLine + "Please enter your name for the top scoreboard: ", 
-                            field.RevealedCells));
-                        string currentPlayerName = Console.ReadLine();
-                        scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
-
-                        Console.WriteLine();
+                        counter++;
                     }
+                }
 
-                    field.RevealNumber(row, col);
+            }
+            if (counter == matrix.Length - minesCount)
+            {
+                isWinner = true;
+            }
+            return isWinner;
+        }
 
-                    playerWon = DoPlayerWon(field.MineField, field.NumberOfMines);
-                    if (playerWon)
+        public void PlayMines()
+        {
+            ScoreBoard scoreBoard = new ScoreBoard();
+            Printer printer = new Printer();
+            ICommandFactory commandFactory = new CommandFactoryWithLazyLoading(scoreBoard, printer);
+            IValidator validator = new Validator();
+            Field field = new Field(5, 10, 15);
+
+            field.Initialize();
+
+            bool isBoomed = false;
+            bool playerWon = false;
+
+            printer.PrintMessage(Messages.StartMessage);
+
+            while (true)
+            {
+                if (isBoomed || playerWon)
+                {
+                    field.Initialize();
+                    isBoomed = false;
+                }
+
+                printer.PrintField(field.MineField, isBoomed);
+
+                printer.PrintMessage(Messages.EnterRowCol);
+                string line = Console.ReadLine();
+                line = line.Trim();
+
+                if (IsMoveEntered(line))
+                {
+                    string[] inputParams = line.Split();
+                    int row = int.Parse(inputParams[0]);
+                    int col = int.Parse(inputParams[1]);
+
+                    if (field.IsMoveInBounds(row, col) && !field.IsCellClickled(row, col))
                     {
-                        printer.PrintField(field.MineField, isBoomed);
-                        printer.PrintMessage(Messages.Success);
-                        string currentPlayerName = Console.ReadLine();
-                        scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
+                        isBoomed = IsPlayerBoomed(field.MineField, row, col);
+                        if (isBoomed)
+                        {
+                            printer.PrintField(field.MineField, isBoomed);
+                            printer.PrintMessage(
+                                string.Format(Environment.NewLine + "Booom! You are killed by a mine!" +
+                                Environment.NewLine + "You revealed {0} cells without mines." +
+                                Environment.NewLine + "Please enter your name for the top scoreboard: ",
+                                field.RevealedCells));
+                            string currentPlayerName = Console.ReadLine();
+                            scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
+
+                            Console.WriteLine();
+                        }
+
+                        field.RevealNumber(row, col);
+
+                        playerWon = DoPlayerWon(field.MineField, field.NumberOfMines);
+                        if (playerWon)
+                        {
+                            printer.PrintField(field.MineField, isBoomed);
+                            printer.PrintMessage(Messages.Success);
+                            string currentPlayerName = Console.ReadLine();
+                            scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
+                        }
+                    }
+                    else
+                    {
+                        printer.PrintMessage(Messages.AlreadyOpenedOrOutOfRange);
                     }
                 }
                 else
                 {
-                    printer.PrintMessage(Messages.AlreadyOpenedOrOutOfRange);
+                    ICommand command = commandFactory.CreateCommand(line);
+
+                    if (command != null)
+                    {
+                        command.Execute();
+                    }
                 }
             }
-            else
+        }
+
+        /// <summary>
+        /// Checks if user input is a valid move and returns a bool that is true if the move is valid and false if the move is not valid.
+        /// </summary>
+        /// <param name="line">User input as a string</param>
+        /// <returns>Bool that is true if the move is valid and false if the move is not valid</returns>
+        private bool IsMoveEntered(string line)
+        {
+            bool validMove = false;
+            try
             {
-                ICommand command = commandFactory.CreateCommand(line);
-
-                if (command != null)
-                {
-                    command.Execute();
-                }
+                //TODO Validate wrong movements with the appropriate exception messages
+                string[] inputParams = line.Split();
+                int row = int.Parse(inputParams[0]);
+                int col = int.Parse(inputParams[1]);
+                validMove = true;
             }
+            catch
+            {
+                validMove = false;
+            }
+
+            return validMove;
         }
+
     }
-
-    /// <summary>
-    /// Checks if user input is a valid move and returns a bool that is true if the move is valid and false if the move is not valid.
-    /// </summary>
-    /// <param name="line">User input as a string</param>
-    /// <returns>Bool that is true if the move is valid and false if the move is not valid</returns>
-    private bool IsMoveEntered(string line)
-    {
-        bool validMove = false;
-        try
-        {
-            //TODO Validate wrong movements with the appropriate exception messages
-            string[] inputParams = line.Split();
-            int row = int.Parse(inputParams[0]);
-            int col = int.Parse(inputParams[1]);
-            validMove = true;
-        }
-        catch
-        {
-            validMove = false;
-        }
-
-        return validMove;
-    }
-
 }

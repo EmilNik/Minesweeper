@@ -1,11 +1,12 @@
-﻿using Minesweeper.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Minesweeper
+﻿namespace Minesweeper
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    using Minesweeper.Commands;
+
     public class CommandFactoryWithLazyLoading : ICommandFactory
     {
         private ScoreBoard scoreBoard;
