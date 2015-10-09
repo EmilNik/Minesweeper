@@ -165,7 +165,7 @@
         	}
             
             
-11.	....
+11.	Implemented singleton design pattern on `Printer`.
         //
 	
 	

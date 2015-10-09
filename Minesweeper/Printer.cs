@@ -11,9 +11,20 @@
     {
         private Dictionary<string, int> scoreBoard;
 
-        public Printer(Dictionary<string, int> scoreBoard)
+        private static Printer instance;
+
+        private Printer(Dictionary<string, int> scoreBoard)
         {
             this.scoreBoard = scoreBoard;
+        }
+        public static Printer GetInstance(Dictionary<string, int> scoreBoard)
+        {
+            // No need for multi threading fix.
+            if (instance == null)
+            {
+                instance = new Printer(scoreBoard);
+            }
+            return instance;
         }
         /// <summary>
         /// Prints the highscores.

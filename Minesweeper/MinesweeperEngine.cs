@@ -51,7 +51,7 @@
         public void PlayMines()
         {
             this.scoreBoard = new ScoreBoard();
-            this.printer = new Printer(scoreBoard.scoreBoard);
+            this.printer = Printer.GetInstance(scoreBoard.scoreBoard);
             this.validator = new Validator();
             this.field = new Field(5, 10, 15);
             this.commandFactory = new CommandFactoryWithLazyLoading(printer, field);
