@@ -10,14 +10,17 @@
     public class CommandFactoryWithLazyLoading : ICommandFactory
     {
         private IPrinter printer;
-        private IField field;
+        private Field field;
+        private IValidator validator;
 
         private ICommand scoreBoardCommand;
         private ICommand exitCommand;
         private ICommand restartCommand;
+        private ICommand flagCommand;
 
-        public CommandFactoryWithLazyLoading(IPrinter printer, IField field)
+        public CommandFactoryWithLazyLoading(IPrinter printer, Field field, IValidator validator)
         {
+            this.validator = validator;
             this.printer = printer;
             this.field = field;
         }
@@ -59,6 +62,15 @@
                     }
 
                     command = this.restartCommand;
+                }
+                else if(commandAsString == "flag")
+                {
+                    if (this.flagCommand == null)
+                    {
+                        this.flagCommand = new FlagCommand(this.field, validator, printer);
+                    }
+
+                    command = this.flagCommand;
                 }
                 else
                 {

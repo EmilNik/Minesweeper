@@ -11,7 +11,7 @@ namespace Minesweeper
 
         void PrintScoreBoard();
 
-        void PrintField(string[,] minesMatrix, bool boomed);
+        void PrintField(Cell[,] minesMatrix, bool boomed);
 
         void PrintMessage(string message);
 

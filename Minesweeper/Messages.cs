@@ -10,13 +10,14 @@
         public const string IligalMove = "Illegal Move!";
 
         public const string StartMessage = @"Welcome to the game “Minesweeper”. 
-                               Try to reveal all cells without mines. 
-                               Use   'top' to view the scoreboard,
-                               Use 'restart' to start a new game 
-                               Use 'exit' to quit  the game.";
+                             Try to reveal all cells without mines. 
+                             Use 'flag' to flag a cell that u think is a bomb,
+                             Use 'top' to view the scoreboard,
+                             Use 'restart' to start a new game 
+                             Use 'exit' to quit  the game.";
 
-        public const string EnterRowCol = "Enter row and column: ";
-        
+        public const string EnterRowColCommand = "Enter row, column or command: ";
+
         public const string BoomMessage = "\nBooom! You are killed by a mine! \nYou revealed {0} cells without mines.\nPlease enter your name for the top scoreboard: ";
 
         public const string Success = "Congratulations! You are the WINNER!\nPlease enter your name for the top scoreboard: ";

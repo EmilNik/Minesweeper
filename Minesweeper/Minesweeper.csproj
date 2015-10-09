@@ -46,8 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cell.cs" />
     <Compile Include="CommandFactoryWithLazyLoading.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
+    <Compile Include="CellPrototype.cs" />
+    <Compile Include="Commands\FlagCommand.cs" />
     <Compile Include="TextFileDataManager.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />

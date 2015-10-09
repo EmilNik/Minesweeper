@@ -7,6 +7,25 @@
     /// </summary>
     public class Validator : IValidator
     {
+        public bool IsMoveEntered(string line)
+        {
+            bool validMove = false;
+            try
+            {
+                //TODO Validate wrong movements with the appropriate exception messages
+                string[] inputParams = line.Split();
+                int row = int.Parse(inputParams[0]);
+                int col = int.Parse(inputParams[1]);
+                validMove = true;
+            }
+            catch
+            {
+                validMove = false;
+            }
+
+            return validMove;
+        }
+
         public void CheckIfIntIsNullOrUndefined(string argument, int number)
         {
             throw new NotImplementedException();

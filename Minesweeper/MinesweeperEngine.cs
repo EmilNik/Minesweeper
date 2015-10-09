@@ -21,12 +21,7 @@
 
         private ICommandFactory commandFactory;
 
-        private bool IsPlayerBoomed(string[,] matrix, int minesRow, int minesCol)
-        {
-            return matrix[minesRow, minesCol] == "*";
-        }
-
-        private bool DoPlayerWon(string[,] matrix, int minesCount)
+        private bool DoPlayerWon(Cell[,] matrix, int minesCount)
         {
             bool isWinner = false;
             int counter = 0;
@@ -34,7 +29,7 @@
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    if ((matrix[i, j] != "") && (matrix[i, j] != "*"))
+                    if ((matrix[i, j].Value != "") && (!matrix[i, j].isBomb))
                     {
                         counter++;
                     }
@@ -54,8 +49,9 @@
             this.scoreBoard = new ScoreBoard(new TextFileDataManager());
             this.printer = Printer.GetInstance(scoreBoard);
             this.validator = new Validator();
+            var cel = new Cell();
             this.field = new Field(5, 10, 15);
-            this.commandFactory = new CommandFactoryWithLazyLoading(printer, field);
+            this.commandFactory = new CommandFactoryWithLazyLoading(printer, field, validator);
 
             field.Initialize();
 
@@ -74,11 +70,11 @@
 
                 printer.PrintField(field.MineField, isBoomed);
 
-                printer.PrintMessage(Messages.EnterRowCol);
+                printer.PrintMessage(Messages.EnterRowColCommand);
                 string line = Console.ReadLine();
                 line = line.Trim();
 
-                if (IsMoveEntered(line))
+                if (validator.IsMoveEntered(line))
                 {
                     string[] inputParams = line.Split();
                     int row = int.Parse(inputParams[0]);
@@ -86,12 +82,12 @@
 
                     if (field.IsMoveInBounds(row, col) && !field.IsCellClickled(row, col))
                     {
-                        isBoomed = IsPlayerBoomed(field.MineField, row, col);
+                        isBoomed = field.MineField[row, col].isBomb;
                         playerWon = DoPlayerWon(field.MineField, field.NumberOfMines);
 
                         EndGame(isBoomed, playerWon);
 
-                        field.RevealNumber(row, col);
+                        field.RevialCell(row, col);
                     }
                     else
                     {
@@ -139,24 +135,7 @@
         /// </summary>
         /// <param name="line">User input as a string</param>
         /// <returns>Bool that is true if the move is valid and false if the move is not valid</returns>
-        private bool IsMoveEntered(string line)
-        {
-            bool validMove = false;
-            try
-            {
-                //TODO Validate wrong movements with the appropriate exception messages
-                string[] inputParams = line.Split();
-                int row = int.Parse(inputParams[0]);
-                int col = int.Parse(inputParams[1]);
-                validMove = true;
-            }
-            catch
-            {
-                validMove = false;
-            }
-
-            return validMove;
-        }
+       
 
     }
 }

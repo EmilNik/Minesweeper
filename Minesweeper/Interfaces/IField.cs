@@ -13,7 +13,7 @@ namespace Minesweeper
 
         bool IsCellClickled(int row, int col);
 
-        void RevealNumber(int row, int col);
+        void RevialCell(int row, int col);
 
         void GetDefaultField();
     }

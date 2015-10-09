@@ -53,25 +53,25 @@
 						}
 					}
 					
-			-	After refactoring: 
+			-	After refactoring:
 			
-				var numberOfPrintedNames = 5;
+					var numberOfPrintedNames = 5;
 
-				var keys = this.scoreBoard.Keys.OrderByDescending(obj => obj).ToArray();
+					var keys = this.scoreBoard.Keys.OrderByDescending(obj => 							obj).ToArray();
 	
-				if (keys.Length < numberOfPrintedNames)
-				{
+					if (keys.Length < numberOfPrintedNames)
+					{
 					numberOfPrintedNames = keys.Length;
-				}
+					}
 	
-				for (int i = 0; i < numberOfPrintedNames; i++)
-				{
+					for (int i = 0; i < numberOfPrintedNames; i++)
+					{
 					var key = keys[i];
 					var person = this.scoreBoard[key];
 	
-					Console.WriteLine("{0}. {1} --> {2} cells", (i + 1), person, key);
+					Console.WriteLine("{0}. {1} --> {2} cells", (i + 1), person, 									key);
 	
-				}
+					}
 				
 		-	Created IPrinter interface and class Printer that inherits it:
 			-	moved method PrintScoreBoard from class Scoreboard to Printer
@@ -175,7 +175,13 @@
 
         void Write(Dictionary<string, int> scoreBoard);
     	}
-13.  
+13.  Moved method `IsMoveEntered` from `Minesweeper.cs` to `Validator.cs`.
+14.  Introduced class `Cell.cs` and abstract class `CellPrototype.cs` to implement Prototype pattern.
+15.  Made changes to `Printer.cs` to work with previous changes(`Cell.cs`).
+16.  Made changes to `Field.cs` to fill the field with objects`Cell()`.
+17.  Implemented a new functionality. While playing the player now can flag a cell of his choice.Introduced a new command `flag` to do that.
+18.  Chanched logic in `Printer.PrintField` to respond to flaged cells.
+19.  ...s
      //
 	
 	

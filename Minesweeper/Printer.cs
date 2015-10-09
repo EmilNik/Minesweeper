@@ -67,7 +67,7 @@
         /// </summary>
         /// <param name="minesMatrix">An array that holds information about each cell of the field.</param>
         /// <param name="boomed">A bool that hold information if the user has hit a mine.</param>
-        public void PrintField(string[,] minesMatrix, bool boomed)
+        public void PrintField(Cell[,] minesMatrix, bool boomed)
         {
             Console.WriteLine("\n     0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("   ---------------------");
@@ -76,21 +76,34 @@
                 Console.Write("{0} | ", i);
                 for (int j = 0; j < minesMatrix.GetLength(1); j++)
                 {
-                    if (!(boomed) && ((minesMatrix[i, j] == "") || (minesMatrix[i, j] == "*")))
+                    if (!boomed)
                     {
-                        Console.Write(" ?");
+                        //TODO implement flaged cell color
+                        if ((minesMatrix[i, j].Value == "") || (minesMatrix[i, j].isBomb))
+                        {
+                            if (minesMatrix[i, j].isFlagged)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                            }
+                            Console.Write(" ?");
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                        }
+                        else
+                        {
+                            Console.Write(" {0}", minesMatrix[i, j].Value);
+                        }
                     }
-                    else if (!(boomed) && (minesMatrix[i, j] != "") && (minesMatrix[i, j] != "*"))
+                    else
                     {
-                        Console.Write(" {0}", minesMatrix[i, j]);
-                    }
-                    else if ((boomed) && (minesMatrix[i, j] == ""))
-                    {
-                        Console.Write(" -");
-                    }
-                    else if ((boomed) && (minesMatrix[i, j] != ""))
-                    {
-                        Console.Write(" {0}", minesMatrix[i, j]);
+                        if (minesMatrix[i, j].Value == "")
+                        {
+                            Console.Write(" -");
+                        }
+                        else
+                        {
+                            Console.Write(" {0}", minesMatrix[i, j].Value);
+                        }
+                       
                     }
                 }
 
