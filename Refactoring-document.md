@@ -166,7 +166,17 @@
             
             
 11.	Implemented singleton design pattern on `Printer`.
-        //
+12.	Implemented new functionality: when ever new player is added the scoreBoard is saved in a file, through strategy pattern(the save/read can be done by diferent classes that implement `IDataManager`- different strategies).
+    
+    
+     	public interface IDataManager
+    	{
+        Dictionary<string, int> Read();
+
+        void Write(Dictionary<string, int> scoreBoard);
+    	}
+13.  
+     //
 	
 	
 	

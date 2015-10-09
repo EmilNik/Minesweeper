@@ -48,11 +48,13 @@
   <ItemGroup>
     <Compile Include="CommandFactoryWithLazyLoading.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
+    <Compile Include="TextFileDataManager.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\ScoreBoardCommand.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Interfaces\ICommandFactory.cs" />
+    <Compile Include="Interfaces\IDataManager.cs" />
     <Compile Include="Interfaces\IField.cs" />
     <Compile Include="Interfaces\IPrinter.cs" />
     <Compile Include="Interfaces\IScoreBoard.cs" />
@@ -68,6 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="files\Scores.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

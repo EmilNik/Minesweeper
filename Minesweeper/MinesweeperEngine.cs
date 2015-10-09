@@ -50,8 +50,9 @@
 
         public void PlayMines()
         {
-            this.scoreBoard = new ScoreBoard();
-            this.printer = Printer.GetInstance(scoreBoard.scoreBoard);
+
+            this.scoreBoard = new ScoreBoard(new TextFileDataManager());
+            this.printer = Printer.GetInstance(scoreBoard);
             this.validator = new Validator();
             this.field = new Field(5, 10, 15);
             this.commandFactory = new CommandFactoryWithLazyLoading(printer, field);
@@ -106,6 +107,7 @@
                         command.Execute();
                     }
                 }
+
             }
         }
 

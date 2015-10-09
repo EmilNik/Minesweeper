@@ -1,5 +1,6 @@
 ﻿namespace Minesweeper
 {
+    using Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -15,11 +16,27 @@
         /// <summary>
         /// A dictionary to store all the hghscores and player names in.
         /// </summary>
-        public readonly Dictionary<string, int> scoreBoard;
+        private Dictionary<string, int> scores;
 
-        public ScoreBoard()
+        public Dictionary<string, int> Scores
         {
-            this.scoreBoard = new Dictionary<string, int>();
+            get
+            {
+                return this.scores;
+            }
+            private set
+            {
+                this.scores = value;
+            }
+        }
+
+        private readonly IDataManager fileManager;
+        
+        public ScoreBoard(IDataManager fileManager)
+        {
+            this.fileManager = fileManager;
+
+            this.Scores = fileManager.Read();
         }
 
         /// <summary>
@@ -29,18 +46,20 @@
         /// <param name="playerScore">The score of the player.</param>
         public void AddPlayer(string playerName, int playerScore)
         {
-            if (!this.scoreBoard.ContainsKey(playerName))
+            if (!this.Scores.ContainsKey(playerName))
             {
-                this.scoreBoard.Add(playerName, playerScore);
+                this.Scores.Add(playerName, playerScore);
             }
             else
             {
-                if (this.scoreBoard[playerName] < playerScore)
+                if (this.Scores[playerName] < playerScore)
                 {
-                    this.scoreBoard[playerName] = playerScore;
+                    this.Scores[playerName] = playerScore;
                 }
             }
+            this.fileManager.Write(this.Scores);
 
+            this.Scores = this.fileManager.Read();
         }
     }
 }

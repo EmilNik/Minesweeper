@@ -9,15 +9,15 @@
     /// </summary>
     public class Printer : IPrinter
     {
-        private Dictionary<string, int> scoreBoard;
+        private readonly ScoreBoard scoreBoard;
 
         private static Printer instance;
 
-        private Printer(Dictionary<string, int> scoreBoard)
+        private Printer(ScoreBoard scoreBoard)
         {
             this.scoreBoard = scoreBoard;
         }
-        public static Printer GetInstance(Dictionary<string, int> scoreBoard)
+        public static Printer GetInstance(ScoreBoard scoreBoard)
         {
             // No need for multi threading fix.
             if (instance == null)
@@ -32,8 +32,8 @@
         /// <param name="scoreBoard">The scoreBoard that holds the highscores.</param>
         public void PrintScoreBoard()
         {
-            var numberOfPrintedNames = 5;
-            var items = from pair in this.scoreBoard
+            var numberOfPrintedNames = 10;
+            var items = from pair in this.scoreBoard.Scores
                         orderby pair.Value descending
                         select pair;
 
@@ -108,6 +108,10 @@
         {
             Console.Write(message);
         }
+        public void PrintMessage(string message, int openedCells)
+        {
+            Console.Write(message, openedCells);
+        }
 
         /// <summary>
         /// Prints a given message with a new line at the end.
@@ -118,9 +122,6 @@
             Console.WriteLine(message);
         }
 
-        public void PrintMessage(string message, int openedCells)
-        {
-            Console.WriteLine(message, openedCells);
-        }
+       
     }
 }
