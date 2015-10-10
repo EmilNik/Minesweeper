@@ -25,13 +25,13 @@ namespace Minesweeper.Commands
             var lane = Console.ReadLine();
             if (!validator.IsMoveEntered(lane))
             {
-                printer.PrintMessage(Messages.IligalMove);
+                printer.PrintMessage(Messages.IllegalMove);
             }
             var row = int.Parse(lane.Split(' ')[0]);
             var col = int.Parse(lane.Split(' ')[1]);
             if (!this.field.IsMoveInBounds(row, col))
             {
-                printer.PrintMessage(Messages.IligalMove);
+                printer.PrintMessage(Messages.IllegalMove);
             }
             this.field.MineField[row, col].isFlagged = true;
         }

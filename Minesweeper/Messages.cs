@@ -18,18 +18,14 @@
 
         public const string EnterRowColCommand = "Enter row, column or command: ";
 
-        public const string BoomMessage =  Environment.NewLine + 
-            "Booom! You are killed by a mine!" + Environment.NewLine +  
-            "You revealed {0} cells without mines." + Environment.NewLine + 
-            "Please enter your name for the top scoreboard: ";
+        public const string BoomMessage = "\nBooom! You are killed by a mine! \nYou revealed {0} cells without mines. \nPlease enter your name for the top scoreboard: ";
 
-        public const string Success = "Congratulations! You are the WINNER!" + Environment.NewLine + 
-            "Please enter your name for the top scoreboard: ";
+        public const string Success = "Congratulations! You are the WINNER!\nPlease enter your name for the top scoreboard: ";
 
         public const string AlreadyOpenedOrOutOfRange = "Cell already opened or is out of range of the minefield!";
 
-        public const string InvalidCommand = "Invalid command!" + Environment.NewLine;
+        public const string InvalidCommand = "Invalid command!\n";
 
-        public const string Bye = "Good bye!" + Environment.NewLine;
+        public const string Bye = "Good bye!\n";
     }
 }
