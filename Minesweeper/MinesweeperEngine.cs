@@ -21,31 +21,19 @@
 
         private ICommandFactory commandFactory;
 
-        private bool DoPlayerWon(Cell[,] matrix, int minesCount)
+        private bool IsPlayerGrandWinner(Cell[,] matrix, int minesCount)
         {
             bool isWinner = false;
-            int counter = 0;
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    if ((matrix[i, j].Value != "") && (!matrix[i, j].isBomb))
-                    {
-                        counter++;
-                    }
-                }
-
-            }
-            if (counter == matrix.Length - minesCount)
+            if (this.field.RevealedCells == matrix.Length - minesCount)
             {
                 isWinner = true;
             }
+
             return isWinner;
         }
 
         public void PlayMines()
         {
-
             this.scoreBoard = new ScoreBoard(new TextFileDataManager());
             this.printer = Printer.GetInstance(scoreBoard);
             this.validator = new Validator();
@@ -83,7 +71,7 @@
                     if (field.IsMoveInBounds(row, col) && !field.IsCellClickled(row, col))
                     {
                         isBoomed = field.MineField[row, col].isBomb;
-                        playerWon = DoPlayerWon(field.MineField, field.NumberOfMines);
+                        playerWon = IsPlayerGrandWinner(field.MineField, field.NumberOfMines);
 
                         EndGame(isBoomed, playerWon);
 
