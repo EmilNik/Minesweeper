@@ -50,8 +50,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TestsGetDefaultFieldMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestsRevealNumberMethod.cs" />
+    <Compile Include="TestsIsCellClickled.cs" />
+    <Compile Include="TestsIsMoveInBoundsMethod.cs" />
+    <Compile Include="TestFillWithRandomMines.cs" />
+    <Compile Include="TestInitializeMethod.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Minesweeper.csproj">
+      <Project>{74466889-40c3-463b-be13-8f28e70d0af8}</Project>
+      <Name>Minesweeper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
