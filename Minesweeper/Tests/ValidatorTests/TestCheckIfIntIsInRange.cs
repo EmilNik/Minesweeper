@@ -24,21 +24,21 @@
             validator.CheckIfIntIsInRange("Number", 11, 6, 10);
         }
 
-        [TestMethod]
-        public void TestCheckIfIntIsInRangeSixbBetweenSixEndTen()
-        {
-            Validator validator = new Validator();
-            var result = validator.CheckIfIntIsInRange("Number", 6, 6, 10);
-            Assert.AreEqual(true, result);
-        }
+        //[TestMethod]
+        //public void TestCheckIfIntIsInRangeSixbBetweenSixEndTen()
+        //{
+        //    Validator validator = new Validator();
+        //    var result = validator.CheckIfIntIsInRange("Number", 6, 6, 10);
+        //    Assert.AreEqual(true, result);
+        //}
 
-        [TestMethod]
-        public void TestCheckIfIntIsInRangeElevenBetweenSixEndTenSecond()
-        {
-            Validator validator = new Validator();
-            var result = validator.CheckIfIntIsInRange("Number", 11, 6, 10);
-            Assert.AreNotEqual(true, result);
-        }
+        //[TestMethod]
+        //public void TestCheckIfIntIsInRangeElevenBetweenSixEndTenSecond()
+        //{
+        //    Validator validator = new Validator();
+        //    var result = validator.CheckIfIntIsInRange("Number", 11, 6, 10);
+        //    Assert.AreNotEqual(true, result);
+        //}
        
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]

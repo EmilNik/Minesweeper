@@ -21,7 +21,7 @@
 
         private ICommandFactory commandFactory;
 
-        private bool IsPlayerGrandWinner(Cell[,] matrix, int minesCount)
+        public bool IsPlayerGrandWinner(Cell[,] matrix, int minesCount)
         {
             bool isWinner = false;
             if (this.field.RevealedCells == matrix.Length - minesCount)
@@ -95,7 +95,7 @@
             }
         }
 
-        private void EndGame(bool isBoomed, bool playerWon)
+        public void EndGame(bool isBoomed, bool playerWon)
         {
             string message;
 
