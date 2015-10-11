@@ -1,15 +1,13 @@
-﻿using Minesweeper.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
-namespace Minesweeper
+﻿namespace Minesweeper
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+
+    using Minesweeper.Interfaces;
+
     public class TextFileDataManager : IDataManager
     {
-
         private const string DefaultScorePath = "../../../Minesweeper/files/scores.txt";
 
         private readonly string scoreFilePath;
@@ -38,12 +36,13 @@ namespace Minesweeper
                     {
                         break;
                     }
+
                     var key = currentLane.Split('-')[0];
                     var value = int.Parse(currentLane.Split('-')[1]);
                     resultScoreBoard.Add(key, value);
-                }
-               
+                }               
             }
+
             return resultScoreBoard;
         }
 

@@ -9,14 +9,14 @@
     /// </summary>
     public class Printer : IPrinter
     {
-        private readonly ScoreBoard scoreBoard;
-
         private static Printer instance;
+        private readonly ScoreBoard scoreBoard;    
 
         private Printer(ScoreBoard scoreBoard)
         {
             this.scoreBoard = scoreBoard;
         }
+
         public static Printer GetInstance(ScoreBoard scoreBoard)
         {
             // No need for multi threading fix.
@@ -24,12 +24,15 @@
             {
                 instance = new Printer(scoreBoard);
             }
+
             return instance;
         }
+
         /// <summary>
         /// Prints the highscores.
         /// </summary>
         /// <param name="scoreBoard">The scoreBoard that holds the highscores.</param>
+        /// 
         public void PrintScoreBoard()
         {
             var numberOfPrintedNames = 10;
@@ -79,12 +82,14 @@
                     if (!boomed)
                     {
                         //TODO implement flaged cell color
-                        if ((minesMatrix[i, j].Value == "") || (minesMatrix[i, j].isBomb))
+                        if (minesMatrix[i, j].Value == string.Empty ||
+                            minesMatrix[i, j].IsBomb)
                         {
-                            if (minesMatrix[i, j].isFlagged)
+                            if (minesMatrix[i, j].IsFlagged)
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
                             }
+
                             Console.Write(" ?");
                             Console.ForegroundColor = ConsoleColor.Gray;
                         }
@@ -95,7 +100,7 @@
                     }
                     else
                     {
-                        if (minesMatrix[i, j].Value == "")
+                        if (minesMatrix[i, j].Value == string.Empty)
                         {
                             Console.Write(" -");
                         }
@@ -103,7 +108,6 @@
                         {
                             Console.Write(" {0}", minesMatrix[i, j].Value);
                         }
-                       
                     }
                 }
 
@@ -121,6 +125,7 @@
         {
             Console.Write(message);
         }
+
         public void PrintMessage(string message, int openedCells)
         {
             Console.Write(message, openedCells);
@@ -134,7 +139,5 @@
         {
             Console.WriteLine(message);
         }
-
-       
     }
 }

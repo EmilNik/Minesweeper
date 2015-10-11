@@ -11,11 +11,11 @@
         public void TestEndGameMetdod()
         {
             MinesweeperEngine testGame = new MinesweeperEngine();
-            var winMessage = Messages.Success;
-            var failNessage = Messages.BoomMessage;
+            //var winMessage = Messages.Success;
+            //var failMessage = Messages.BoomMessage;
             testGame.EndGame(true, true);
-
         }
+
         /*
         private void EndGame(bool isBoomed, bool playerWon)
         {

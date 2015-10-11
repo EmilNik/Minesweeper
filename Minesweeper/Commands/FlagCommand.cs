@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Minesweeper.Commands
+﻿namespace Minesweeper.Commands
 {
+    using System;
+
     public class FlagCommand : ICommand
     {
         private readonly Field field;
@@ -19,21 +16,24 @@ namespace Minesweeper.Commands
             this.validator = validator;
             this.field = field;
         }
+
         public void Execute()
         {
             Console.Write("Enter row and column to flag: ");
             var lane = Console.ReadLine();
-            if (!validator.IsMoveEntered(lane))
+            if (!this.validator.IsMoveEntered(lane))
             {
-                printer.PrintMessage(Messages.IllegalMove);
+                this.printer.PrintMessage(Messages.IllegalMove);
             }
+
             var row = int.Parse(lane.Split(' ')[0]);
             var col = int.Parse(lane.Split(' ')[1]);
             if (!this.field.IsMoveInBounds(row, col))
             {
-                printer.PrintMessage(Messages.IllegalMove);
+                this.printer.PrintMessage(Messages.IllegalMove);
             }
-            this.field.MineField[row, col].isFlagged = true;
+
+            this.field.MineField[row, col].IsFlagged = true;
         }
     }
 }

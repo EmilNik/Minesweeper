@@ -4,14 +4,29 @@
 
     public class Field : IField
     {
-        private Random random;
         private readonly Cell cel = new Cell();
 
+        private Random random;  
         private int numberOfMines;
         private Cell[,] mineField;
         private int rows;
         private int cols;
         private int revealedCells;
+
+        /// <summary>
+        /// An object Field that holds number of mines, rows, cols, mine field and number of revealedCells.
+        /// </summary>
+        /// <param name="rows">Number of Rows.</param>
+        /// <param name="cols">Number of Cols.</param>
+        /// <param name="numbOfMines">Number of mines.</param>
+        public Field(int rows, int cols, int numbOfMines)
+        {
+            this.NumberOfMines = numbOfMines;
+            this.Rows = rows;
+            this.Cols = cols;
+            this.mineField = new Cell[this.Rows, this.Cols];
+            this.RevealedCells = 0;
+        }
 
         /// <summary>
         /// Number of mines.
@@ -22,6 +37,7 @@
             {
                 return this.numberOfMines;
             }
+
             private set
             {
                 this.numberOfMines = value;
@@ -37,6 +53,7 @@
             {
                 return this.mineField;
             }
+
             private set
             {
                 this.mineField = value;
@@ -71,28 +88,13 @@
         }
 
         /// <summary>
-        /// An object Field that holds number of mines, rows, cols, mine field and number of revealedCells.
-        /// </summary>
-        /// <param name="rows">Number of Rows.</param>
-        /// <param name="cols">Number of Cols.</param>
-        /// <param name="numbOfMines">Number of mines.</param>
-        public Field(int rows, int cols, int numbOfMines)
-        {
-            this.NumberOfMines = numbOfMines;
-            this.Rows = rows;
-            this.Cols = cols;
-            this.mineField = new Cell[this.Rows, this.Cols];
-            this.RevealedCells = 0;
-        }
-
-        /// <summary>
         /// Initialises the Field.
         /// </summary>
         public void Initialize()
         {
             this.RevealedCells = 0;
-            GetDefaultField();
-            FillWithRandomMines();
+            this.GetDefaultField();
+            this.FillWithRandomMines();
         }
 
         /// <summary>
@@ -115,8 +117,7 @@
         /// <returns>A bool that is true if the given cell is already clicked and false if the cell is still closed.</returns>
         public bool IsCellClickled(int row, int col)
         {
-            return  this.mineField[row, col].Value != "" && !this.mineField[row, col].isBomb;
-           
+            return this.mineField[row, col].Value != string.Empty && !this.mineField[row, col].IsBomb;           
         }
 
         /// <summary>
@@ -126,30 +127,28 @@
         /// <param name="col">Given col.</param>
         public void RevialCell(int row, int col)
         {
-
-            if (this.mineField[row, col].Value == "")
+            if (this.mineField[row, col].Value == string.Empty)
             {
-                int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
-                int[] dCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
+                int[] directionRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
+                int[] directionCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
                 int minesCounter = 0;
 
-                for (int direction = 0; direction < 8; direction++)
+                for (int direction = 0; direction < directionRow.Length; direction++)
                 {
-                    int newRow = dRow[direction] + row;
-                    int newCol = dCol[direction] + col;
-                    if (IsMoveInBounds(newRow, newCol))
+                    int newRow = directionRow[direction] + row;
+                    int newCol = directionCol[direction] + col;
+                    if (this.IsMoveInBounds(newRow, newCol))
                     {
-                        if (this.MineField[newRow, newCol].isBomb)
+                        if (this.MineField[newRow, newCol].IsBomb)
                         {
                             minesCounter++;
                         }
                     }
-
                 }
+
                 this.mineField[row, col].Value = Convert.ToString(minesCounter);
                 this.RevealedCells++;
             }
-
         }
 
         /// <summary>
@@ -161,7 +160,7 @@
             {
                 for (int j = 0; j < this.Cols; j++)
                 {
-                    this.mineField[i, j] = cel.Clone();
+                    this.mineField[i, j] = this.cel.Clone();
                 }
             }
         }
@@ -173,13 +172,13 @@
         {
             this.random = new Random();
             int minesCounter = 0;
-            while (minesCounter < NumberOfMines)
+            while (minesCounter < this.NumberOfMines)
             {
                 int randomRow = this.random.Next(0, this.Rows);
                 int randomCol = this.random.Next(0, this.cols);
-                if (!this.mineField[randomRow, randomCol].isBomb)
+                if (!this.mineField[randomRow, randomCol].IsBomb)
                 {
-                    this.mineField[randomRow, randomCol].isBomb = true;
+                    this.mineField[randomRow, randomCol].IsBomb = true;
                     this.mineField[randomRow, randomCol].Value = "*";
                     minesCounter++;
                 }

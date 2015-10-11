@@ -63,11 +63,11 @@
 
                     command = this.restartCommand;
                 }
-                else if(commandAsString == "flag")
+                else if (commandAsString == "flag")
                 {
                     if (this.flagCommand == null)
                     {
-                        this.flagCommand = new FlagCommand(this.field, validator, printer);
+                        this.flagCommand = new FlagCommand(this.field, this.validator, this.printer);
                     }
 
                     command = this.flagCommand;
@@ -79,7 +79,7 @@
             }
             catch (ArgumentException)
             {
-                printer.PrintMessageWithNewLine("Invalid command!");
+                this.printer.PrintMessageWithNewLine("Invalid command!");
                 return null;
             }
 

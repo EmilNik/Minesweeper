@@ -1,11 +1,9 @@
-﻿using Minesweeper.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Minesweeper
+﻿namespace Minesweeper
 {
+    using System;
+
+    using Minesweeper.Commands;
+
     public interface ICommandFactory
     {
         ICommand CreateCommand(string command);

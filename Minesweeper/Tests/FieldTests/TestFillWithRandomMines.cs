@@ -1,22 +1,20 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Minesweeper;
-
-namespace FieldTests
+﻿namespace FieldTests
 {
+    using System;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Minesweeper;
+
     [TestClass]
     public class TestFillWithRandomMines
     {
-        
-
         [TestMethod]
         public void FillWithRandomMinesCountedMines()
         {
             Field mineFieldTest = new Minesweeper.Field(5, 10, 15);
             mineFieldTest.Initialize();
             Cell[,] testMineFiled = mineFieldTest.MineField;
-            
-            
+
             string expectedstarSymbol = "*";
             int counter = 0;
 
@@ -24,7 +22,7 @@ namespace FieldTests
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    if ((testMineFiled[i, j].Value == expectedstarSymbol))
+                    if (testMineFiled[i, j].Value == expectedstarSymbol)
                     {
                         counter++;
                     }

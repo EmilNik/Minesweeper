@@ -8,16 +8,15 @@
     public class TestCheckIfIntIsInRange
     {
         [TestMethod]
-        [ExpectedException(typeof( ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestCheckIfIntIsInRangeFiveBetweenSixEndTen()
         {
             Validator validator = new Validator();
             validator.CheckIfIntIsInRange("Number", 5, 6, 10);
-
         }
 
         [TestMethod]
-        [ExpectedException(typeof( ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestCheckIfIntIsInRangeElevenBetweenSixEndTen()
         {
             Validator validator = new Validator();
@@ -38,8 +37,7 @@
         //    Validator validator = new Validator();
         //    var result = validator.CheckIfIntIsInRange("Number", 11, 6, 10);
         //    Assert.AreNotEqual(true, result);
-        //}
-       
+        //}       
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestCheckIfIntIsInRangeMinusOne2bBetweenSixEndTen()

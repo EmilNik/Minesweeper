@@ -1,9 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Minesweeper;
-
-namespace FieldTests
+﻿namespace FieldTests
 {
+    using System;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Minesweeper;
+
      /// <summary>
     /// TEst the correctness of the reveal number
     /// </summary>
@@ -12,7 +13,8 @@ namespace FieldTests
     {
         [TestMethod]
         public void TestRevealNumber()
-        {//Create a Test Field
+        {  
+            //Create a Test Field
             int testRow = 5;
             int testCall = 10;
             int mines = 15;
@@ -37,16 +39,16 @@ namespace FieldTests
 
             mineFieldTest.RevialCell(1, 0);
 
-            if (testMineFiled[1, 0] == "")
+            if (testMineFiled[1, 0] == string.Empty)
             {
-                int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
-                int[] dCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
+                int[] directionRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
+                int[] directionCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
                 int minesCounterRevealNumber = 0;
 
                 for (int direction = 0; direction < 8; direction++)
                 {
-                    int newRow = dRow[direction] + 1;
-                    int newCol = dCol[direction] + 0;
+                    int newRow = directionRow[direction] + 1;
+                    int newCol = directionCol[direction] + 0;
                     if (mineFieldTest.IsMoveInBounds(newRow, newCol))
                     {
                         if (testMineFiled[newRow, newCol] == "*")
@@ -55,6 +57,7 @@ namespace FieldTests
                         }
                     }
                 }
+
                 testMineFiled[1, 0] = Convert.ToString(minesCounterRevealNumber);
                 string result = testMineFiled[1, 0];
                 revialedCells++;
@@ -64,7 +67,8 @@ namespace FieldTests
 
         [TestMethod]
         public void TestRevealNumberWithEightBombs()
-        {//Create a Test Field
+        { 
+            //Create a Test Field
             int testRow = 5;
             int testCall = 10;
             int mines = 15;
@@ -82,24 +86,24 @@ namespace FieldTests
                     testMineFiled[i, j] += "*";
                 }
             }
-            testMineFiled[1, 1] += "";
 
+            testMineFiled[1, 1] += string.Empty;
 
             int revialedCells = 0;
             string expectedRevealNumber = "8";
 
             mineFieldTest.RevialCell(1, 1);
 
-            if (testMineFiled[1, 1] == "")
+            if (testMineFiled[1, 1] == string.Empty)
             {
-                int[] dRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
-                int[] dCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
+                int[] directionRow = { 1, 1, 1, 0, -1, -1, -1, 0 };
+                int[] directionCol = { 1, 0, -1, -1, -1, 0, 1, 1 };
                 int minesCounterRevealNumber = 0;
 
                 for (int direction = 0; direction < 8; direction++)
                 {
-                    int newRow = dRow[direction] + 1;
-                    int newCol = dCol[direction] + 0;
+                    int newRow = directionRow[direction] + 1;
+                    int newCol = directionCol[direction] + 0;
                     if (mineFieldTest.IsMoveInBounds(newRow, newCol))
                     {
                         if (testMineFiled[newRow, newCol] == "*")
@@ -108,6 +112,7 @@ namespace FieldTests
                         }
                     }
                 }
+
                 testMineFiled[1, 0] = Convert.ToString(minesCounterRevealNumber);
                 string result = testMineFiled[1, 0];
                 revialedCells++;

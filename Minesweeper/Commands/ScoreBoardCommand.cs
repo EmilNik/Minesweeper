@@ -8,7 +8,7 @@
     /// <summary>
     /// The exit command cares about printing the scoreBoard when the command is executed.
     /// </summary>
-    class ScoreBoardCommand : ICommand
+    public class ScoreBoardCommand : ICommand
     {
         private IPrinter printer;
 

@@ -1,9 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Minesweeper;
-
-namespace FieldTests
+﻿namespace FieldTests
 {
+    using System;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Minesweeper;
+
     [TestClass]
     public class TestInitializeMethod
     {
@@ -21,7 +22,7 @@ namespace FieldTests
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    if ((testMineFiled[i, j].Value == expectedstarSymbol))
+                    if (testMineFiled[i, j].Value == expectedstarSymbol)
                     {
                         counter++;
                     }
@@ -38,14 +39,14 @@ namespace FieldTests
             mineFieldTest.Initialize();
             Cell[,] testMineFiled = mineFieldTest.MineField;
 
-            string expectedstarSymbol = "";
+            string expectedstarSymbol = string.Empty;
             int counter = 0;
 
             for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    if ((testMineFiled[i, j].Value == expectedstarSymbol))
+                    if (testMineFiled[i, j].Value == expectedstarSymbol)
                     {
                         counter++;
                     }
@@ -62,7 +63,7 @@ namespace FieldTests
             mineFieldTest.Initialize();
             Cell[,] testMineFiled = mineFieldTest.MineField;
 
-            string expectedEmptySymbol = "";
+            string expectedEmptySymbol = string.Empty;
             string expectedstarSymbol = "*";
             int counter = 0;
 
@@ -70,7 +71,8 @@ namespace FieldTests
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    if ((testMineFiled[i, j].Value != expectedstarSymbol)&&(testMineFiled[i, j].Value != expectedEmptySymbol))                
+                    if ((testMineFiled[i, j].Value != expectedstarSymbol) && 
+                        (testMineFiled[i, j].Value != expectedEmptySymbol))                
                     {
                         counter++;
                     }

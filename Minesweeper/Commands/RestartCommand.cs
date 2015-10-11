@@ -21,6 +21,7 @@
 
             this.field = field;
         }
+
         public void Execute()
         {
             this.field.Initialize();

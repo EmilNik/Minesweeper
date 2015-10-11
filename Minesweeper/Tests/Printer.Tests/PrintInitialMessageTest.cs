@@ -1,10 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Minesweeper;
-
-namespace Printer.Tests
-
+﻿namespace Printer.Tests
 {
+    using System;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Minesweeper;
+
     [TestClass]
     public class PrintInitialMessageTest
     {
@@ -26,20 +26,18 @@ namespace Printer.Tests
             int call = 10;
             int mines = 15;
             string[,] testMineFiled = new string[row, call];
-            string emptySymbol = "";
+            string emptySymbol = string.Empty;
             IField mineFieldTest = new Minesweeper.Field(row, call, mines);
             mineFieldTest.GetDefaultField();
 
-        
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < call; j++)
                 {
-                    testMineFiled[i, j] = "";
+                    testMineFiled[i, j] = string.Empty;
                     Assert.AreEqual(emptySymbol, testMineFiled[i, j]);
                 }
             }
         }
-
     }
 }

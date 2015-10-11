@@ -11,15 +11,16 @@
         public void TestIsPlayerGrandWinner()
         {
             MinesweeperEngine testGame = new MinesweeperEngine();
-            Cell [,] matrix = new Cell[5,10];
+            Cell[,] matrix = new Cell[5, 10];
             for (int i = 0; i < 5; i++)
-			{
-			    for (int j = 0; j < 9; j++)
-			    {
-			        matrix[i,j].Value = "3";
-			    }
-                matrix[i,9].Value = "*";
-			}
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    matrix[i, j].Value = "3";
+                }
+
+                matrix[i, 9].Value = "*";
+            }
 
             var result = testGame.IsPlayerGrandWinner(matrix, 5);
             Assert.AreEqual(true, result);

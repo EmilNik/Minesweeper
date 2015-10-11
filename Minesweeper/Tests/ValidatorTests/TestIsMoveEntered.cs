@@ -11,9 +11,10 @@
         public void TestIsMoveEnteredValid()
         {
             Validator validator = new Validator();
-            var output =  validator.IsMoveEntered("5 6");
+            var output = validator.IsMoveEntered("5 6");
             Assert.AreEqual(true, output);
         }
+
         /*
          A little bit unuseles - there is another Validator for Range - Are we using it? 
          
@@ -48,7 +49,6 @@
             var output = validator.IsMoveEntered("0 9");
             Assert.AreEqual(true, output);
         }*/
-
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]

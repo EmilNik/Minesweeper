@@ -1,10 +1,9 @@
 ﻿namespace Minesweeper
 {
-    using Interfaces;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+
+    using Interfaces;
     using Wintellect.PowerCollections;
 
     /// <summary>
@@ -12,11 +11,18 @@
     /// </summary>
     public class ScoreBoard : IScoreBoard
     {
+        private readonly IDataManager fileManager;
 
         /// <summary>
         /// A dictionary to store all the hghscores and player names in.
         /// </summary>
         private Dictionary<string, int> scores;
+
+        public ScoreBoard(IDataManager fileManager)
+        {
+            this.fileManager = fileManager;
+            this.Scores = fileManager.Read();
+        }
 
         public Dictionary<string, int> Scores
         {
@@ -24,21 +30,13 @@
             {
                 return this.scores;
             }
+
             private set
             {
                 this.scores = value;
             }
-        }
-
-        private readonly IDataManager fileManager;
+        }    
         
-        public ScoreBoard(IDataManager fileManager)
-        {
-            this.fileManager = fileManager;
-
-            this.Scores = fileManager.Read();
-        }
-
         /// <summary>
         /// Adds a new player to the Score board. Accepts playerName and playerScore that are saved in the database.
         /// </summary>
@@ -57,6 +55,7 @@
                     this.Scores[playerName] = playerScore;
                 }
             }
+
             this.fileManager.Write(this.Scores);
 
             this.Scores = this.fileManager.Read();
