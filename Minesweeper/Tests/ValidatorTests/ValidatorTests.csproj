@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04A1334D-7C20-45FC-BC1C-4C32C6453104}</ProjectGuid>
+    <ProjectGuid>{4445EE08-75F0-473B-AE5C-CDE00213252B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MinesweeperEngine</RootNamespace>
-    <AssemblyName>MinesweeperEngine</AssemblyName>
+    <RootNamespace>ValidatorTests</RootNamespace>
+    <AssemblyName>ValidatorTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,8 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TestCheckIfIntIsInRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestIsMoveEntered.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Minesweeper.csproj">
+      <Project>{74466889-40c3-463b-be13-8f28e70d0af8}</Project>
+      <Name>Minesweeper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
