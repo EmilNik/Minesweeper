@@ -25,7 +25,7 @@
             }
             catch
             {
-                validMove = false;
+                throw new ArgumentOutOfRangeException("Please enter a valid movment!");
             }
 
             return validMove;
