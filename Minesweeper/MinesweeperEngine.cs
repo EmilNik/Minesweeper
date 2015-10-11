@@ -9,7 +9,7 @@
     using Minesweeper;
     using Minesweeper.Commands;
 
-    public class MinesweeperEngine
+    public class MinesweeperEngine : IMinesweeperEngine
     {
         private ScoreBoard scoreBoard;
 
@@ -116,14 +116,5 @@
             string currentPlayerName = Console.ReadLine();
             scoreBoard.AddPlayer(currentPlayerName, field.RevealedCells);
         }
-
-
-        /// <summary>
-        /// Checks if user input is a valid move and returns a bool that is true if the move is valid and false if the move is not valid.
-        /// </summary>
-        /// <param name="line">User input as a string</param>
-        /// <returns>Bool that is true if the move is valid and false if the move is not valid</returns>
-       
-
     }
 }

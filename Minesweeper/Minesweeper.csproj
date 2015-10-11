@@ -51,6 +51,7 @@
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="CellPrototype.cs" />
     <Compile Include="Commands\FlagCommand.cs" />
+    <Compile Include="Interfaces\IMinesweeperEngine.cs" />
     <Compile Include="TextFileDataManager.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />

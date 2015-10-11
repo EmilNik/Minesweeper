@@ -49,14 +49,14 @@
                 var person = keys[i].Key;
                 var key = keys[i].Value;
 
-                var message = "{i+1}. {person} --> {key} cell";
+                var message = "{0}. {1} --> {2} cell";
 
                 if (key != 1)
                 {
                     message += "s";
                 }
 
-                Console.WriteLine(message);
+                Console.WriteLine(message, i + 1, person, key);
             }
 
             Console.WriteLine();
