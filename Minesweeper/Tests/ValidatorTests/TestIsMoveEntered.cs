@@ -65,6 +65,7 @@
             Validator validator = new Validator();
             validator.IsMoveEntered("name something");
         }
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestIsMoveEnteredNotValidNegativParameters()
