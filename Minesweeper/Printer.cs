@@ -8,6 +8,7 @@
     /// </summary>
     public class Printer : IPrinter
     {
+        // Singleton
         private static Printer instance;
 
         private readonly IScoreBoard scoreBoard;    

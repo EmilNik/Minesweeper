@@ -27,6 +27,7 @@
             {
                 return this.scores;
             }
+
             set
             {
                 this.scores = value;
