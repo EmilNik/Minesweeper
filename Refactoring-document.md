@@ -223,6 +223,7 @@
 10. Design Patterns
 	1. Creational
 		* Simple Factory pattern implemented by class CommandFactoryWithLazyLoading - creates a specific command for game end - exit, restart, or top
+		*  Prototype pattern implemented by class Cell
 	2. Structural
 		* Facade pattern implemented by class MinesweeperEngine introducing PlayMines() method
 	3. Behavior
