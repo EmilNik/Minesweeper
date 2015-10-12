@@ -17,15 +17,14 @@
             bool validMove = false;
             try
             {
-                //TODO Validate wrong movements with the appropriate exception messages
+                ////TODO Validate wrong movements with the appropriate exception messages
                 string[] inputParams = line.Split();
                 int row = int.Parse(inputParams[0]);
                 int col = int.Parse(inputParams[1]);
                 validMove = true;
             }
-            catch
+            catch (FormatException)
             {
-                throw new ArgumentOutOfRangeException("Please enter a valid movment!");
             }
 
             return validMove;

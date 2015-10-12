@@ -11,7 +11,7 @@
             private string[,] testMineFiled = new string[5, 10];
             private IField mineFieldTest = new Minesweeper.Field(5, 10, 15);
 
-        //Positive tests
+        // Positive tests
         [TestMethod]
         public void TetsIsMoveInBoundsPossitiveEdgeOne()
         {
@@ -40,7 +40,7 @@
             Assert.AreEqual(true, output);
         }
 
-        //Negative tests
+        // Negative tests
         [TestMethod]
         public void TetsIsMoveInBoundsNegativeEdgeOne()
         {
@@ -76,7 +76,7 @@
             Assert.AreNotEqual(true, output);
         }
 
-        //Test With Extreme numbe
+        // Test With Extreme numbe
         [TestMethod]
         public void TetsIsMoveInBoundsNegativeExtremeNumber()
         {

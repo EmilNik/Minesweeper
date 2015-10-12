@@ -5,7 +5,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Minesweeper;
 
-    //TO DO not well implemented, always pass!!!
+    // TODO not well implemented, always pass!!!
     [TestClass]
     public class TestsIsCellClickled
     {

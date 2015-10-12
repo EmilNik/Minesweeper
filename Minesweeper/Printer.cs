@@ -81,7 +81,7 @@
                 {
                     if (!boomed)
                     {
-                        //TODO implement flaged cell color
+                        ////TODO implement flaged cell color
                         if (minesMatrix[i, j].Value == string.Empty ||
                             minesMatrix[i, j].IsBomb)
                         {

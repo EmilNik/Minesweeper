@@ -14,7 +14,7 @@
         [TestMethod]
         public void TestRevealNumber()
         {  
-            //Create a Test Field
+            // Create a Test Field
             int testRow = 5;
             int testCall = 10;
             int mines = 15;
@@ -68,7 +68,7 @@
         [TestMethod]
         public void TestRevealNumberWithEightBombs()
         { 
-            //Create a Test Field
+            // Create a Test Field
             int testRow = 5;
             int testCall = 10;
             int mines = 15;
@@ -78,7 +78,7 @@
 
             mineFieldTest.GetDefaultField();
 
-            //bombs All Around            
+            // bombs All Around            
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)

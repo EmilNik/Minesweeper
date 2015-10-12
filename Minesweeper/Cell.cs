@@ -2,7 +2,7 @@
 {
     using System;
 
-    //Prototype pattern
+    ////Prototype pattern
     public class Cell : CellPrototype
     {
         public Cell()

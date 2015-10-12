@@ -11,8 +11,9 @@
         public void TestEndGameMetdod()
         {
             MinesweeperEngine testGame = new MinesweeperEngine();
-            //var winMessage = Messages.Success;
-            //var failMessage = Messages.BoomMessage;
+
+            // var winMessage = Messages.Success;
+            // var failMessage = Messages.BoomMessage;
             testGame.EndGame(true, true);
         }
 

@@ -59,7 +59,7 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(FormatException))]
         public void TestIsMoveEnteredNotValidStringAsParameter()
         {
             Validator validator = new Validator();
@@ -75,7 +75,7 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(FormatException))]
         public void TestIsMoveEnteredNotValid()
         {
             Validator validator = new Validator();
