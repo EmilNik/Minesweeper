@@ -222,9 +222,11 @@
 
 10. Design Patterns
 	1. Creational
+		* Simple Factory pattern implemented by class CommandFactoryWithLazyLoading - creates a specific command for game end - exit, restart, or top
 	2. Structural
 		* Facade pattern implemented by class MinesweeperEngine introducing PlayMines() method
 	3. Behavior
+		* Strategy pattern in class CommandFactoryWithLazyLoading - client can determine what kind of printer and validator to use
 
 11. TODOs (some thoughts on the game) 
    * Not sure but in DoPlayerWon() method, in Minichki class, **counter** variable and **for loop** are unnecessary -
