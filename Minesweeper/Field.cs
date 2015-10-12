@@ -38,7 +38,7 @@
                 return this.numberOfMines;
             }
 
-            private set
+            set
             {
                 this.numberOfMines = value;
             }
@@ -54,7 +54,7 @@
                 return this.mineField;
             }
 
-            private set
+            set
             {
                 this.mineField = value;
             }

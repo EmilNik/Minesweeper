@@ -1,10 +1,8 @@
 ﻿namespace Minesweeper
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
-
-    using Minesweeper.Interfaces;
+    using Interfaces;
 
     public class TextFileDataManager : IDataManager
     {

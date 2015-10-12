@@ -8,10 +8,10 @@
     public class Validator : IValidator
     {
         /// <summary>
-        /// Checks if user input is a valid move and returns a bool that is true if the move is valid and false if the move is not valid.
+        /// Checks if user input is a valid move and returns a boolean that is true if the move is valid and false if the move is not valid.
         /// </summary>
         /// <param name="line">User input as a string</param>
-        /// <returns>Bool that is true if the move is valid and false if the move is not valid</returns>
+        /// <returns>Boolean that is true if the move is valid and false if the move is not valid</returns>
         public bool IsMoveEntered(string line)
         {
             bool validMove = false;
@@ -76,7 +76,7 @@
         {
             if (text.Length < minNumber || text.Length > maxNumber)
             {
-                throw new ArgumentOutOfRangeException("{argument} must be between {minNumber} and {maxNumber} symbols long");
+                throw new ArgumentOutOfRangeException($"{argument} must be between {minNumber} and {maxNumber} symbols long");
             }
         }
     }

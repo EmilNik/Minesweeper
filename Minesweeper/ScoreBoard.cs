@@ -1,10 +1,7 @@
 ﻿namespace Minesweeper
 {
-    using System;
     using System.Collections.Generic;
-
     using Interfaces;
-    using Wintellect.PowerCollections;
 
     /// <summary>
     /// The ScoreBoard that holds a list of all player and their scores.
@@ -30,8 +27,7 @@
             {
                 return this.scores;
             }
-
-            private set
+            set
             {
                 this.scores = value;
             }

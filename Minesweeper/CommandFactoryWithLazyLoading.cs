@@ -1,16 +1,12 @@
 ﻿namespace Minesweeper
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
-    using Minesweeper.Commands;
+    using Commands;
 
     public class CommandFactoryWithLazyLoading : ICommandFactory
     {
         private IPrinter printer;
-        private Field field;
+        private IField field;
         private IValidator validator;
 
         private ICommand scoreBoardCommand;
@@ -18,7 +14,7 @@
         private ICommand restartCommand;
         private ICommand flagCommand;
 
-        public CommandFactoryWithLazyLoading(IPrinter printer, Field field, IValidator validator)
+        public CommandFactoryWithLazyLoading(IPrinter printer, IField field, IValidator validator)
         {
             this.validator = validator;
             this.printer = printer;

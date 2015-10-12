@@ -4,13 +4,13 @@
 
     public class FlagCommand : ICommand
     {
-        private readonly Field field;
+        private readonly IField field;
 
         private IValidator validator;
 
         private IPrinter printer;
 
-        public FlagCommand(Field field, IValidator validator, IPrinter printer)
+        public FlagCommand(IField field, IValidator validator, IPrinter printer)
         {
             this.printer = printer;
             this.validator = validator;

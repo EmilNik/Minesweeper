@@ -1,9 +1,13 @@
 ﻿namespace Minesweeper
 {
-    using System;
-
     public interface IField
-    {
+    { 
+        int NumberOfMines { get; set; }
+
+        int RevealedCells { get; set; }
+
+        Cell[,] MineField { get; set; }
+
         void Initialize();
 
         bool IsMoveInBounds(int row, int col);

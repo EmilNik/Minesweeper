@@ -1,7 +1,6 @@
 ﻿namespace Minesweeper
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -10,14 +9,15 @@
     public class Printer : IPrinter
     {
         private static Printer instance;
-        private readonly ScoreBoard scoreBoard;    
 
-        private Printer(ScoreBoard scoreBoard)
+        private readonly IScoreBoard scoreBoard;    
+
+        private Printer(IScoreBoard scoreBoard)
         {
             this.scoreBoard = scoreBoard;
         }
 
-        public static Printer GetInstance(ScoreBoard scoreBoard)
+        public static Printer GetInstance(IScoreBoard scoreBoard)
         {
             // No need for multi threading fix.
             if (instance == null)

@@ -1,8 +1,5 @@
 ﻿namespace Minesweeper
 {
-    using System;
-
-    ////Prototype pattern
     public class Cell : CellPrototype
     {
         public Cell()

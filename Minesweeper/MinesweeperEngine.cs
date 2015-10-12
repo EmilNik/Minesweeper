@@ -1,23 +1,17 @@
 ﻿namespace Minesweeper
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    
-    using Minesweeper;
-    using Minesweeper.Commands;
-    using Wintellect.PowerCollections;
+    using Commands;
 
     public class MinesweeperEngine : IMinesweeperEngine
     {
-        private ScoreBoard scoreBoard;
+        private IScoreBoard scoreBoard;
 
         private IPrinter printer;
 
         private IValidator validator;
 
-        private Field field;
+        private IField field;
 
         private ICommandFactory commandFactory;
 

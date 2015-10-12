@@ -1,12 +1,11 @@
 ﻿namespace Minesweeper
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
     public interface IScoreBoard
     {
+        Dictionary<string, int> Scores { get; set; }
+
         void AddPlayer(string playerName, int playerScore);
     }
 }
